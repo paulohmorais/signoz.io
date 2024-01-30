@@ -1,11 +1,11 @@
 ---
-title: OpenTelemetry vs OpenTracing - choosing one for instrumentation
+title: OpenTelemetry vs. OpenTracing - Decoding the Future of Telemetry Data
 slug: opentelemetry-vs-opentracing
-date: 2023-01-03
+date: 2023-10-18
 tags: [Tools Comparison]
 authors: [ankit_anand]
 description: If you’re thinking of choosing between OpenTelemetry and OpenTracing, go for OpenTelemetry. OpenTracing is now deprecated, and users of OpenTracing are advised to migrate to OpenTelemetry...
-image: /img/blog/2022/04/opentelemetry_vs_opentracing_cover.webp
+image: /img/blog/2023/10/opentelemetry-vs-opentracing-cover-min.jpg
 keywords:
   - opentelemetry
   - opentracing
@@ -22,7 +22,7 @@ OpenTelemetry and OpenTracing are open-source projects used to instrument applic
 
 <!--truncate-->
 
-![Cover Image](/img/blog/2022/04/opentelemetry_vs_opentracing_cover.webp)
+![Cover Image](/img/blog/2023/10/opentelemetry-vs-opentracing-cover.webp)
 
 If you’re thinking of choosing between OpenTelemetry and OpenTracing, go for OpenTelemetry. OpenTracing is now deprecated, and users of OpenTracing are advised to migrate to OpenTelemetry.
 
@@ -47,7 +47,7 @@ The biggest advantage of using OpenTelemetry is that you have the freedom to cho
 
 To integrate OpenTelemetry with your application code, you can use the OpenTelemetry client libraries of the required programming language. OpenTelemetry also provides a collector known as OTel(OpenTelemetry) collector that can be used to process and export telemetry data in multiple formats.
 
-<!-- ![The architecture of OpenTelemetry. You can integrate OTel libraries with your application code](OpenTelemetry%20vs%20OpenTracing%20-%20choosing%20one%20for%20in%20665d83371fb941b1bdef6577733c75cd/opentelemetry_architecture_new.png) -->
+<!-- ![The architecture of OpenTelemetry. You can integrate OTel libraries with your application code](OpenTelemetry%20vs%20OpenTracing%20-%20choosing%20one%20for%20in%20665d83371fb941b1bdef6577733c75cd/opentelemetry_architecture_new.webp) -->
 
 
 <figure data-zoomable align='center'>
@@ -71,7 +71,9 @@ OpenTracing APIs were meant to solve this by developing a common instrumentation
 
 OpenTelemetry was formed after the merger of OpenTracing and OpenCensus and is currently being actively developed as the single standard for application instrumentation under CNCF. OpenTelemetry combines the functionalities of OpenTracing and OpenCensus and also extends them.
 
-While OpenTelemetry can be your single source for all kinds of telemetry data like logs, metrics, and traces, OpenTracing was focused only on distributed tracing. For users who are using OpenTracing APIs, they can migrate to OpenTelemetry. OpenTelemetry is backwards compatible with OpenTracing.
+While OpenTelemetry can be your single source for all kinds of telemetry data like logs, metrics, and traces, OpenTracing was focused only on distributed tracing. For users who are using OpenTracing APIs, they can migrate to OpenTelemetry.
+
+For organizations and developers currently on the fence, the choice is clear: OpenTelemetry. Not only does it encompass the functionalities of OpenTracing, but it also offers extended capabilities. With OpenTracing being deprecated, migrating to OpenTelemetry is the logical step forward. The transition is made easier by OpenTelemetry's active efforts to ensure backward compatibility and its comprehensive approach to telemetry data.
 
 ## FAQs
 
@@ -85,7 +87,7 @@ At the moment, Jaeger OpenTelemetry libraries are experimental. <a href = "https
 
 ## SigNoz - An Open Source APM built natively for OpenTelemetry
 
-SigNoz is a full-stack open source APM built natively to support OpenTelemetry. At SigNoz, we believe that OpenTelemetry is going to be the world standard for instrumenting cloud-native applications. 
+SigNoz is a full-stack [open source APM](https://signoz.io/blog/opentelemetry-apm/) built natively to support OpenTelemetry. At SigNoz, we believe that OpenTelemetry is going to be the world standard for instrumenting cloud-native applications. 
 
 SigNoz supports OpenTelemetry semantic conventions and provides visualization for all three distinct types of signals(log management is under active development) supported by OpenTelemetry.
 
@@ -95,7 +97,9 @@ The steps to send telemetry data to SigNoz involves:
 - Configure OpenTelemetry Exporters to send data to SigNoz
 - Visualize and analyze telemetry data using SigNoz dashboards
 
-It is easy to get started with SigNoz. It can be installed on macOS or Linux computers in just three steps by using a simple installation script.
+It's very easy to get started with SigNoz. SigNoz cloud is the easiest way to run SigNoz. You can [sign up](https://signoz.io/teams/) for a free account and get 30 days of free uncapped usage.
+
+You can also install and self-host SigNoz yourself. It can be installed on macOS or Linux computers in just three steps by using a simple install script.
 
 The install script automatically installs Docker Engine on Linux. However, you must manually install [Docker Engine](https://docs.docker.com/engine/install/) on macOS before running the install script.
 

@@ -1,7 +1,6 @@
 ---
 id: manage-dashboards-and-panels
 title: Manage Dashboards and Panels
-sidebar_label: Manage Dashboards and Panels
 ---
 
 import GetHelp from '../shared/get-help.md'

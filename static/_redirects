@@ -1,5 +1,5 @@
 /learn/user-stories                 /observability-user-stories
-/slack                              https://join.slack.com/t/signoz-community/shared_invite/zt-2421fjjci-RO7y1FrVbkh0bnh~8oy5nA
+/slack                              https://join.slack.com/t/signoz-community/shared_invite/zt-27jc2jeqv-CrV6Odd1P0xXgTQyJ_D~tA
 /docs/deployment/docker             /docs/install/docker
 /docs/deployment/docker_swarm       /docs/install/docker-swarm
 /docs/deployment/helm_chart         /docs/install/kubernetes
@@ -13,3 +13,6 @@
 /docs/instrumentation/nodejs/       /docs/instrumentation/javascript/
 /gh                                 https://github.com/SigNoz/signoz/
 /free-trial/                        /teams/
+/opentelemetry-2023/                /blog/opentelemetry-roundup-2023/
+/blog/what-is-cloudwatch-metrics/   /blog/cloudwatch-metrics/
+

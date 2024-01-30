@@ -1,11 +1,11 @@
 ---
-title: Top 11 MYSQL monitoring tools in 2023 [open-source included]
+title: Top 11 MYSQL monitoring tools in 2024 [open-source included]
 slug: mysql-monitoring-tools
-date: 2023-06-04
+date: 2023-10-18
 tags: [Tech Resources]
 authors: [ankit_anand, daniel]
 description: Top MySQL Monitoring Tools List - 1.SigNoz 2.Prometheus 3.Dynatrace 4.Sematext 5.Solar winds 6.DataDog 7.MySQL Enterprise Monitor 8.Paessler PRTG Network Monitor...
-image: /img/blog/2023/06/mysql_monitoring_tools_cover-min.jpg
+image: /img/blog/2023/06/mysql-monitoring-tools-cover.jpeg
 keywords:
   - mysql
   - mysql monitoring
@@ -20,18 +20,14 @@ keywords:
   <link rel="canonical" href="https://signoz.io/blog/mysql-monitoring-tools/"/>
 </head>
 
-import SignUps from '../docs/shared/sign-ups.md'
-
 Database monitoring is a critical component in your application performance monitoring. Apart from application code issues, database issues are one of the most common reasons for a bad user experience. MySQL is one of the most popular open-source DBMS that businesses have widely adopted.
 
 <!--truncate-->
 
-![Cover Image](/img/blog/2023/06/mysql_monitoring_tools_cover.webp)
+![Cover Image](/img/blog/2023/06/mysql-monitoring-tools-cover.webp)
 
 
-MySQL monitoring tools can help you identify potential issues with your database, keep a continuous check on your database instances, improve performance and detect and alert you about real-time issues. 
-
-<SignUps />
+MySQL monitoring tools can help you identify potential issues with your database, keep a continuous check on your database instances, improve performance and detect and alert you about real-time issues.
 
 But choosing the right MySQL monitoring tool can be daunting. How do you know which one is right for your application stack? Here is a list of the top 11 MySQL monitoring tools that can help you keep your MySQL database instances in fine health:
 
@@ -82,7 +78,9 @@ SigNoz also provides distributed tracing, using which you can visualize complete
 
 <br></br>
 
-It's very easy to get started with SigNoz. It can be installed on macOS or Linux computers in just three steps by using a simple install script.
+It's very easy to get started with SigNoz. SigNoz cloud is the easiest way to run SigNoz. You can [sign up](https://signoz.io/teams/) for a free account and get 30 days of free uncapped usage.
+
+You can also install and self-host SigNoz yourself. It can be installed on macOS or Linux computers in just three steps by using a simple install script.
 
 The install script automatically installs Docker Engine on Linux. However, on macOS, you must manually install <a href = "https://docs.docker.com/engine/install/" rel="noopener noreferrer nofollow" target="_blank" >Docker Engine</a> before running the install script.
 

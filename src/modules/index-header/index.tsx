@@ -12,15 +12,14 @@ export const Header = () => {
     <header className="my-16">
       <div className="flex flex-col items-center mb-5 text-center px-5">
         <Hero>
-          OpenTelemetry-Native Traces,
+          OpenTelemetry-Native Traces,&nbsp;
           <br className="hidden lg:inline" />
           Metrics, and Logs in a single pane
         </Hero>
         <SubHeading>
-          SigNoz is an open source Datadog or New Relic alternative. A single
-          tool for all your observability <br className="hidden lg:inline" />
-          needs - APM, logs, metrics, exceptions, alerts, and dashboards powered
-          by a powerful query builder.
+          A single tool for all your observability 
+          needs - APM, logs, metrics, exceptions, <br className="hidden lg:inline" /> alerts, and dashboards powered
+          by a powerful query builder. 
         </SubHeading>
       </div>
       <div className="flex flex-col md:flex-row gap-5 justify-center mb-12 mx-5">
@@ -47,14 +46,14 @@ export const Header = () => {
           <div className="p-2 rounded-lg flex justify-center items-center hero-figure max-w-4xl">
             <img
               className="rounded-lg"
-              src="/img/landing/signoz-landing-snap.png"
+              src="/img/landing/signoz-landing-snap.webp"
             />
             <div
               onClick={() => setShowVideo(true)}
               className="cursor-pointer play-container w-16 h-16 md:w-24 md:h-24 rounded-full bg-primary-500 flex justify-center items-center focus-visible:outline-none"
             >
               <img
-                src="/img/landing/play-icon.png"
+                src="/img/landing/play-icon.webp"
                 className="w-6 h-6 md:w-10 md:h-10"
               />
             </div>

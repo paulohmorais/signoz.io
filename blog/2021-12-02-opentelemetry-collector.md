@@ -1,11 +1,14 @@
 ---
 title: OpenTelemetry Collector - architecture and configuration guide
 slug: opentelemetry-collector-complete-guide
-date: 2023-09-14
+date: 2024-01-23
 tags: [OpenTelemetry]
 authors: ankit_anand
 description: OpenTelemetry collector provides a vendor-neutral way to collect, process, and export your telemetry data to an analysis backend of your choice. Learn how to configure..
 image: /img/blog/2023/01/opentelemetry_collector_guide_cover-min.jpg
+hide_table_of_contents: false
+toc_min_heading_level: 2
+toc_max_heading_level: 2
 keywords:
   - opentelemetry
   - opentelemetry collector
@@ -27,13 +30,13 @@ OpenTelemetry Collector is a stand-alone service provided by OpenTelemetry. It c
 
 <!--truncate-->
 
-![Cover Image](/img/blog/2023/01/opentelemetry_collector_guide_cover.webp)
+![Cover Image](/img/blog/2024/01/opentelemetry-collector-cover.webp)
 
 The first step in setting up observability with OpenTelemetry is instrumentation. The application code is instrumented with OpenTelemetry client libraries that help generate telemetry data like logs, metrics, and traces.
 
 Once the telemetry data is generated, it can be exported directly to an observability backend or an OpenTelemetry Collector. The collector provides a vendor-neutral way to collect, process, and export your telemetry data(logs, metrics, and traces), and that’s why it is preferable to use a collector. The biggest advantage of using OpenTelemetry collectors is the flexibility to create different data pipelines.
 
-<SignUps />
+[![Try SigNoz Cloud CTA](/img/blog/2024/01/opentelemetry-collector-try-signoz-cloud-cta.webp)](https://signoz.io/teams/)
 
 OpenTelemetry collectors can be deployed in different ways. It can be deployed on each host machine as an agent. When the collector is deployed on host machines, you can directly collect host metrics like CPU usage, RAM, disk I/O metrics, etc.
 
@@ -224,147 +227,82 @@ service:
           exporters: [clickhousemetricswrite]
 ```
 
-A sample OpenTelemetry Collector configuration file. (Source: <a href = "https://signoz.io/" rel="noopener noreferrer nofollow" target="_blank" >SigNoz</a>)
+A sample OpenTelemetry Collector configuration file having receivers for OTLP and MySQL. (Source: [Monitor MySQL metrics with OpenTelemetry and SigNoz](https://signoz.io/blog/opentelemetry-mysql-metrics-monitoring/))
 
-```bash
+```yaml
 receivers:
-  filelog/dockercontainers:
-    include: [  "/var/lib/docker/containers/*/*.log" ]
-    start_at: end
-    include_file_path: true
-    include_file_name: false
-    operators:
-    - type: json_parser
-      id: parser-docker
-      output: extract_metadata_from_filepath
-      timestamp:
-        parse_from: attributes.time
-        layout: '%Y-%m-%dT%H:%M:%S.%LZ'
-    - type: regex_parser
-      id: extract_metadata_from_filepath
-      regex: '^.*containers/(?P<container_id>[^_]+)/.*log$'
-      parse_from: attributes["log.file.path"]
-      output: parse_body
-    - type: move
-      id: parse_body
-      from: attributes.log
-      to: body
-      output: time
-    - type: remove
-      id: time
-      field: attributes.time
-  opencensus:
-    endpoint: 0.0.0.0:55678
-  otlp/spanmetrics:
-    protocols:
-      grpc:
-        endpoint: localhost:12345
   otlp:
     protocols:
       grpc:
-        endpoint: 0.0.0.0:4317
+        endpoint: localhost:4317
       http:
-        endpoint: 0.0.0.0:4318
-  jaeger:
-    protocols:
-      grpc:
-        endpoint: 0.0.0.0:14250
-      thrift_http:
-        endpoint: 0.0.0.0:14268
-      # thrift_compact:
-      #   endpoint: 0.0.0.0:6831
-      # thrift_binary:
-      #   endpoint: 0.0.0.0:6832
-  hostmetrics:
-    collection_interval: 60s
-    scrapers:
-      cpu: {}
-      load: {}
-      memory: {}
-      disk: {}
-      filesystem: {}
-      network: {}
-
+        endpoint: localhost:4318
+  mysql:
+    endpoint: localhost:3306
+    username: <your-root-username>
+    password: <your-root-password>
+    collection_interval: 10s
+    initial_delay: 10s
 processors:
   batch:
-    send_batch_size: 10000
-    send_batch_max_size: 11000
+    send_batch_size: 1000
     timeout: 10s
-  signozspanmetrics/prometheus:
-    metrics_exporter: prometheus
-    latency_histogram_buckets: [100us, 1ms, 2ms, 6ms, 10ms, 50ms, 100ms, 250ms, 500ms, 1000ms, 1400ms, 2000ms, 5s, 10s, 20s, 40s, 60s ]
-    dimensions_cache_size: 10000
-    dimensions:
-      - name: service.namespace
-        default: default
-      - name: deployment.environment
-        default: default
-
-  resourcedetection:
-    # Using OTEL_RESOURCE_ATTRIBUTES envvar, env detector adds custom labels.
-    detectors: [env, system] # include ec2 for AWS, gce for GCP and azure for Azure.
-    timeout: 2s
-    override: false
-
-extensions:
-  health_check:
-    endpoint: 0.0.0.0:13133
-  zpages:
-    endpoint: 0.0.0.0:55679
-  pprof:
-    endpoint: 0.0.0.0:1777
-
 exporters:
-  clickhousetraces:
-    datasource: tcp://clickhouse:9000/?database=signoz_traces
-  clickhousemetricswrite:
-    endpoint: tcp://clickhouse:9000/?database=signoz_metrics
-    resource_to_telemetry_conversion:
-      enabled: true
-  prometheus:
-    endpoint: 0.0.0.0:8889
-  # logging: {}
-
-  clickhouselogsexporter:
-    dsn: tcp://clickhouse:9000/
-    timeout: 5s
-    sending_queue:
-      queue_size: 100
-    retry_on_failure:
-      enabled: true
-      initial_interval: 5s
-      max_interval: 30s
-      max_elapsed_time: 300s
-
+  otlp:
+    endpoint: "ingest.{region}.signoz.cloud:443" # replace {region} with your region
+    tls:
+      insecure: false
+    headers:
+      "signoz-access-token": "{signoz-token}" # Obtain from https://{your-signoz-url}/settings/ingestion-settings
+  logging:
+    verbosity: detailed
 service:
   telemetry:
     metrics:
-      address: 0.0.0.0:8888
-  extensions:
-    - health_check
-    - zpages
-    - pprof
+      address: localhost:8888
   pipelines:
-    traces:
-      receivers: [jaeger, otlp]
-      processors: [signozspanmetrics/prometheus, batch]
-      exporters: [clickhousetraces]
     metrics:
-      receivers: [otlp]
+      receivers: [otlp, mysql]
       processors: [batch]
-      exporters: [clickhousemetricswrite]
-    metrics/hostmetrics:
-      receivers: [hostmetrics]
-      processors: [resourcedetection, batch]
-      exporters: [clickhousemetricswrite]
-    metrics/spanmetrics:
-      receivers: [otlp/spanmetrics]
-      exporters: [prometheus]
-    logs:
-      receivers: [otlp, filelog/dockercontainers]
-      processors: [batch]
-      exporters: [clickhouselogsexporter]
+      exporters: [otlp]
 ```
+
+## Use Cases of OpenTelemetry Collector
+
+OpenTelemetry Collector is a powerful tool used for gathering, processing and exporting telemetry data. Processors in OpenTelemetry Collector can be used to accomplish many real life use-cases when it comes to telemetry data processing. Some of the use-cases are:
+
+- Prevent sensitive fields from accidentally leaking into traces. It can also ensure compliance with legal, privacy, or security requirements. (Using Redaction Processor)
+- Batch telemetry data to better compress data and reduce the number of outgoing connections required to transmit the data. (Using Batch Processor)
+- Modify attributes of a span, log, or metric to enrich your telemetry data. (Using attributes processor)
+- Tranform your metrics, logs, or traces by renaming, adding, or deleting. You can also perform aggregations before sending the telemetry data to a backend. (Using metrics transform processor, log transform processor)
+
+
+## FAQs
+
+### What is OpenTelemetry agent vs collector?
+
+OpenTelemetry Agent and OpenTelemetry Collector are two ways of deploying the OpenTelemetry Collector. We refer to it as an 'agent' when it is typically deployed close to the application, focusing on local data collection. You can also configure the agent to collect metrics about the host system using the hostmetrics receiver. Meanwhile, we refer to it as a 'collector' when it is deployed as a centralized standalone service that collects data from multiple agents or servers.
+
+### What is the difference between OpenTelemetry Collector and Jaeger?
+
+OpenTelemetry collector is part of the OpenTelemetry project and it's designed to collect, process, and export telemetry data - including metrics, logs, and traces. While jaeger, on the other hand, is a distributed tracing system used for monitoring and troubleshooting microservices-based system. Jaeger specifically focuses on traces.
+
+Jaeger can receive trace data from the OpenTelemetry Collector or directly from instrumented applications.
+
+### What is the difference between OpenTelemetry Collector and Prometheus?
+
+OpenTelemetry collector is part of the OpenTelemetry project and it's designed to collect, process, and export telemetry data - including metrics, logs, and traces. While Pometheus is a specialized tool focused on time-series metrics collection, storage, and analysis. 
+
+OpenTelemetry Collector collects telemetry data from various sources, processes it, and forwards it to different backends. While Prometheus primarily collects metrics using a pull model, scraping metrics from instrumented endpoints.
+
+### What is OpenTelemetry collector-contrib?
+
+The OpenTelemetry Collector Contrib, often referred to as "collector-contrib," is a repository and distribution of the OpenTelemetry Collector that includes a collection of components contributed by the community. These components extend the basic functionality of the OpenTelemetry Collector, offering additional flexibility and capabilities.
+
+These contributions are not part of the core distribution of the OpenTelemetry Collector but are made available for users who need them. The contrib repo has a wide range of receivers, processors, and exporters contributed by the community.
+
+<a href = "https://github.com/open-telemetry/opentelemetry-collector-contrib" rel="noopener noreferrer nofollow" target="_blank" >OpenTelemetry Collector Contrib</a>
+
 
 ## Getting started with OpenTelemetry
 
@@ -387,6 +325,6 @@ ___
 
 **[OpenTelemetry Tracing - things you need to know](https://signoz.io/blog/opentelemetry-tracing/)**<br></br>
 
-**[OpenTelemetry Logs - A Complete Introduction & Implementation](https://signoz.io/blog/opentelemetry-logs/)<br></br>
+**[OpenTelemetry Logs - A Complete Introduction & Implementation](https://signoz.io/blog/opentelemetry-logs/)**<br></br>
 
 **[Monitor Nodejs Application with OpenTelemetry and SigNoz](https://signoz.io/opentelemetry/nodejs/)**<br></br>

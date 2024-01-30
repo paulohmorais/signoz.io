@@ -37,7 +37,7 @@ On the **Traces** page, you can view and analyze requests as they propagate thro
 
 From the sidebar, select **Traces**:
 
-![Open the Traces section](/img/open-traces-section-v0.6.2.png)
+![Open the Traces section](/img/open-traces-section-v0.6.2.webp)
 
 ## Visualize Aggregate Metrics from Traces
 
@@ -56,11 +56,11 @@ SigNoz allows you to see aggregates of your filtered traces. The following funct
 
 To specify the function you wish to graph and indicate how the system should group data, you must use the dropdown list to select a function from the list, and then use the Group By clause to break the results into separate data series. The following example screenshot shows how you can plot the number of invocations for each of your services:
 
-![Customize the graph](/img/customize-the-graph-v0.6.2.png)
+![Customize the graph](/img/customize-the-graph-v0.6.2.webp)
 
 ## Filter Spans by Tags/Attributes
 
-Tags/Attributes are key-value pairs that allow you to filter spans by their characteristics. SigNoz supports multi-selection criterion. And the characteristics include, but are not limited to HTTP headers, DB systems, and Messaging destinations etc. For exhaustive list please refer to OpenTelemetry’s semantic conventions described on the [Trace Semantic Conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/README.md) page of the OpenTelemetry specification.
+Tags/Attributes are key-value pairs that allow you to filter spans by their characteristics. SigNoz supports multi-selection criterion. And the characteristics include, but are not limited to HTTP headers, DB systems, and Messaging destinations etc. For exhaustive list please refer to OpenTelemetry’s semantic conventions described on the [Trace Semantic Conventions](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/general/trace.md) page of the OpenTelemetry specification.
 
 There are two ways in which you can filter traces by tags:
 - You can enter plain text in the **Quick Filter** input box and then select the **Run** button at the far right. Note that text is interpreted as case-sensitive.
@@ -69,12 +69,12 @@ There are two ways in which you can filter traces by tags:
 ## Advanced Filtering Feature
 
 You can use the **Advanced Filtering** pane that contains multiple filter criteria that you can apply to your spans:
-![Advanced filtering](/img/advanced-filtering-v0.6.2.png)
+![Advanced filtering](/img/advanced-filtering-v0.6.2.webp)
 
 ## Sort Spans by various tags
 
 Select a column heading to sort the list by the values in that column. Select the column heading again to reverse the sort order or to cancel sorting:
-![Sort spans](/img/sort-spans-v0.6.2.png)
+![Sort spans](/img/sort-spans-v0.6.2.webp)
 
 ## Inspect a Span
 

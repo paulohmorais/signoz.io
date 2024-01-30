@@ -1,7 +1,7 @@
 ---
 title: Loki vs Elasticsearch - Which tool to choose for Log Analytics?
 slug: loki-vs-elasticsearch
-date: 2023-02-28
+date: 2024-01-22
 tags: [Tools Comparison]
 authors: ankit_anand
 description: Loki and Elastcisearch (ELK stack) are both log analytics tools. While Loki is designed to keep indexing low, Elasticsearch indexes all data in every field, and each indexed field has a dedicated, optimized data structure....
@@ -25,6 +25,7 @@ keywords:
 
 import SignUps from '../docs/shared/sign-ups.md'
 import LogsPerf from '../docs/shared/logs-perf-cta.md'
+import GetStartedSigNoz from '../docs/shared/get-started-signoz.md';
 
 Elasticsearch, or the ELK stack, is a popular log analytics solution. The Loki project was started at Grafana Labs in 2018. Grafana leads the development of Loki, while Elastic is the company behind Elasticsearch. In this article, we will do a detailed comparison between these two tools for log analytics.
 
@@ -34,9 +35,9 @@ Elasticsearch, or the ELK stack, is a popular log analytics solution. The Loki p
 
 Log data helps application owners debug their applications while also playing a critical role in cyber security. Most modern applications are now based on distributed components based on container technologies. Collecting log data from these systems and deriving timely insights from them can be complex. That’s where Log analytics tools like Loki and Elasticsearch come into the picture.
 
-Before we look at the differences between these two tools, let us have a brief overview of both tools.
+One of the biggest complaints of using Elasticsearch is that it hogs a lot of resources. Loki does not index all log lines, and only indexes labels associated with log lines. This makes Loki faster than Elasticsearch but only where your use-case is fulfilled by indexing of labels.
 
-<SignUps />
+Before we look at the differences between these two tools, let us have a brief overview of both tools.
 
 ## What is Loki?
 
@@ -69,6 +70,17 @@ There are other log-collecting tools too that can be used for collecting logs. F
 Now that we have an overview of both tools let’s discuss the key differences between them.
 
 <LogsPerf />
+
+## Loki vs Elasticsearch - at a glance
+
+|  | Loki | Elasticsearch |
+| --- | --- | --- |
+| [Storage](#storage) | Requires less space | Is resource intensive |
+| [Indexing](#indexing) | Designed to keep indexing low | Indexes all log lines |
+| [Query Language](#query-language) | LogQL | Kibana Query Language or Lucene Query Syntax |
+| [Log Collectors](#promtail-vs-logstash) | Uses Promtail | Uses Logstash |
+| [User Interface](#user-interface---grafana-vs-kibana) | Grafana | Kibana |
+| Cost | More cost-efficient but lesser search capabilities | Costly but provides full-text search |
 
 ## Key differences between Loki and Elasticsearch
 
@@ -165,24 +177,7 @@ With advanced Log Query Builder, you can filter out logs quickly with a mix and 
 
 ## Getting started with SigNoz
 
-SigNoz can be installed on macOS or Linux computers in just three steps by using a simple install script.
-
-The install script automatically installs Docker Engine on Linux. However, on macOS, you must manually install <a href = "https://docs.docker.com/engine/install/" rel="noopener noreferrer nofollow" target="_blank" >Docker Engine</a> before running the install script.
-
-```bash
-git clone -b main https://github.com/SigNoz/signoz.git
-cd signoz/deploy/
-./install.sh
-```
-
-You can visit our documentation for instructions on how to install SigNoz using Docker Swarm and Helm Charts.
-
-
-[![Deployment Docs](/img/blog/common/deploy_docker_documentation.webp)](https://signoz.io/docs/install/)
-
-If you liked what you read, then check out our GitHub repo 👇
-
-[![SigNoz GitHub repo](/img/blog/common/signoz_github.webp)](https://github.com/SigNoz/signoz)
+<GetStartedSigNoz />
 
 ---
 

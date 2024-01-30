@@ -10,7 +10,7 @@ const PricingStructure = () => {
           <Heading>Pricing you can trust.</Heading>
           <SubHeading>
             Tired of Datadog’s unpredictable bills or New Relic’s user-based
-            pricing? <br className="hidden lg:inline" />
+            pricing?&nbsp;<br className="hidden lg:inline" />
             We’re here for you.
           </SubHeading>
         </div>

@@ -347,7 +347,7 @@ service:
         exporters: [clickhouselogsexporter]
 ```
 
-Once the changes are made, we need to restart the OTel Collector container to apply new changes. Use the command `docker-compose restart`.
+Once the changes are made, we need to restart the OTel Collector container to apply new changes. Use the command `docker compose restart`.
 
 Check if all the containers are running properly by using the command `docker ps`:
 

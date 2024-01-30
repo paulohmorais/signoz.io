@@ -4,7 +4,7 @@ import Link from "@docusaurus/Link";
 
 function careers() {
     return (
-      <Layout title="SigNoz Plans">
+      <Layout title="SigNoz Careers">
         <section>
         <div className="container" style={{marginTop: '2rem', marginBottom:'4rem'}}>
           
@@ -12,22 +12,13 @@ function careers() {
           <p style={{textAlign: "center"}}>  Join us to democratise great observability for all teams</p>
   
           <div className={"row"}>
-              <div className={"col col--6 margin-vert--md"}>
+            
+              {/* <div className={"col col--6 margin-vert--md"}>
                   <div class="card">
                       <div class="card__header">
                           <h3> Product Designer (Remote) (India) </h3>
                       </div>
-                      {/* <div class="card__image">
-                        <img
-                            src="/img/case_study/Instasafe-summary.png"
-                            alt="InstaSafe"
-                         />
-                      </div>
-                      <div class="card__body">
-                          <p>
 
-                          </p>
-                      </div> */}
                       <div class="card__footer">
                       <Link
                         className="button button--primary"
@@ -45,32 +36,18 @@ function careers() {
                           <h3>DevRel Engineers (Remote) (India)</h3>
                           
                       </div>
-                      {/* <div class="card__image">
-                        <img
-                            src="/img/case_study/BlipBillBoards-summary.png"
-                            alt="Blip"
-                             />
-                      </div>
-                      <div class="card__body">
-                          <p>
-  
-                
-  
-                          
-  
-                          </p>
-                      </div> */}
+
                       <div class="card__footer">
                       <a class="button button--primary"
                        href="/careers/devrel-engineer-in/" 
                        >Read more</a>
                       </div>
                   </div>
-              </div>
+              </div> */}
               <div className={"col col--6 margin-vert--md"}>
                   <div class="card">
                       <div class="card__header">
-                          <h3>Technical Content Writer/Marketer (Remote) (India)</h3>
+                          <h3>Technical Content Writer (Remote)</h3>
                       </div>
                       {/* <div class="card__image">
                         <img
@@ -88,29 +65,35 @@ function careers() {
                       <a class="button button--primary" href="/careers/technical-content-writer-in/" >Read more</a>
                       </div>
                   </div>
-              </div>
+              </div> 
               <div className={"col col--6 margin-vert--md"}>
                   <div class="card">
                       <div class="card__header">
-                          <h3>Senior Frontend Engineer (Remote) (India)</h3>
+                          <h3>Site Reliability Engineer (Remote)</h3>
+                          
                       </div>
-                      {/* <div class="card__image">
-                        <img
-                            src="/img/case_study/outplay-list.webp"
-                            alt="Image alt text"
-                            title="Logo Title Text 1" />
-                      </div>
-                      <div class="card__body">
-                          <p>
-  
-  
-                          </p>
-                      </div> */}
+
                       <div class="card__footer">
-                      <a class="button button--primary" href="/careers/senior-frontend-engineer-in/" >Read more</a>
+                      <a class="button button--primary"
+                       href="/careers/site-reliability-engineer/" 
+                       >Read more</a>
                       </div>
                   </div>
-              </div>        
+              </div>  
+              <div className={"col col--6 margin-vert--md"}>
+                  <div class="card">
+                      <div class="card__header">
+                          <h3>Community Engineer (Remote)</h3>
+                          
+                      </div>
+
+                      <div class="card__footer">
+                      <a class="button button--primary"
+                       href="/careers/community-engineer-in/" 
+                       >Read more</a>
+                      </div>
+                  </div>
+              </div>     
           </div>
         </div>  
         </section>

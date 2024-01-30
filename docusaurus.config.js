@@ -37,7 +37,7 @@ const config = {
     prism: {
       // Supported languages are:
       // https://prismjs.com/index.html#supported-languages
-      additionalLanguages: ["ruby", "csharp", "php", "java"],
+      additionalLanguages: ["ruby", "csharp", "php", "java", "scala", "kotlin"],
     },
     zoom: {
       selector: "figure[data-zoomable] > img",
@@ -172,6 +172,10 @@ const config = {
               to: "learn/",
             },
             {
+              label: "Technical Writer Program",
+              to: "technical-writer-program/",
+            },
+            {
               label: "Community Archive",
               href: "https://community-chat.signoz.io/",
             },
@@ -262,6 +266,24 @@ const config = {
         },
       },
     ],
+    // Redocusaurus config
+    [
+      'redocusaurus',
+      {
+        // Plugin Options for loading OpenAPI files
+        specs: [
+          {
+            spec: 'openapi/alerts.yaml',
+            route: '/api_reference',
+          },
+        ],
+        // Theme Options for modifying how redoc renders them
+        theme: {
+          // Change with your site colors
+          primaryColor: '#1890ff',
+        },
+      },
+    ],
   ],
   // plugins: ["posthog-docusaurus"],
   plugins: [
@@ -317,7 +339,7 @@ const config = {
           {
             tagName: "link",
             rel: "icon",
-            href: "/img/icons/icon-512x512.png",
+            href: "/img/icons/icon-512x512.webp",
           },
           {
             tagName: "link",

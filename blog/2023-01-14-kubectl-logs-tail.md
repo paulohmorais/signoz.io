@@ -1,11 +1,14 @@
 ---
 title: Kubectl Logs Tail | How to Tail Kubernetes Logs
 slug: kubectl-logs-tail
-date: 2023-01-14
+date: 2024-01-21
 tags: [Tech Tutorial, Log Management]
 authors: [daniel]
 description: The `kubectl logs tail` command is a tool that allows users to stream the logs of a pod in real-time while using Kubernetes. This command is particularly useful for...
-image: /img/blog/2023/01/kubectl_logs_tail_cover.jpeg
+image: /img/blog/2024/01/kubectl-logs-tail-cover-min.jpg
+hide_table_of_contents: false
+toc_min_heading_level: 2
+toc_max_heading_level: 2
 keywords:
   - kubectl
   - kubernetes
@@ -29,7 +32,7 @@ The `kubectl logs tail` command is a tool that allows users to stream the logs o
 
 <!--truncate-->
 
-![Cover Image](/img/blog/2023/01/kubectl_logs_tail_cover.webp)
+![Cover Image](/img/blog/2024/01/kubectl-logs-tail-cover.webp)
 
 In this article, we will see how to use the `kubectl logs tail` command to stream logs, the benefits of using the command, and an advanced tool for streaming logs.
 
@@ -221,6 +224,22 @@ $ kubectl logs --tail=5 --since=1h nginx
 The `kubectl logs --tail` command offers the ability to stream the most recent logs in real-time, making it an invaluable tool for debugging issues within a pod. By providing a live view of the logs as they are generated, this command enables users to quickly identify and troubleshoot problems as they arise. For instance, if an error is occurring in a container, `kubectl logs --tail` can be used to stream the logs and search for error messages or other indicators of the issue at hand.
 
 In addition to its usefulness in debugging, `kubectl logs --tail` can also serve as a means of monitoring the output of long-running processes. By streaming the logs of such processes, users can track the progress of a task and identify any potential issues as they occur. This feature can be particularly helpful in keeping tabs on the status of tasks that take an extended period of time to complete.
+
+## Use cases of `kubectl logs tail` command
+
+Here are some use cases where `kubectl logs tail`` command can be useful:
+
+1. **Debugging Application Issues:** Quickly inspecting recent log entries to diagnose issues or errors in a specific pod.
+
+2. **Monitoring Real-Time Events:** Observing real-time log outputs for applications during critical operations or deployments.
+
+3. **Troubleshooting Kubernetes System Components:** Checking logs of Kubernetes system pods to diagnose cluster-level issues.
+
+4. **Quick Log Checks:** Performing rapid, ad-hoc log inspections without the need for complex logging infrastructure.
+
+5. **Post-Deployment Verification:** Verifying application behavior immediately after deployment by reviewing recent logs.
+
+6. **Incident Response:** In the event of an incident, quickly tailing logs to understand recent changes or errors.
 
 ## Final Thoughts
 

@@ -1,7 +1,7 @@
 ---
 title:  Senior Frontend Engineer (Remote) (India)
 slug: senior-frontend-engineer-in
-#image: /img/case_study/BlipBillBoards.png
+#image: /img/case_study/BlipBillBoards.webp
 #authors: [pranay]
 # hide_table_of_contents: true
 
@@ -50,6 +50,6 @@ Here's our [Github repo](https://github.com/SigNoz/signoz)
 
 Seems like something right up your alley? 
 
-**Email your CV and an optional  intro note to [ankit at signoz  dot io]**. Feel free to include links to your GitHub, LinkedIn, Twitter, or blog posts.
+**Email your CV and an optional  intro note to [yunus at signoz  dot io]**. Feel free to include links to your GitHub, LinkedIn, Twitter, or blog posts.
 
 Our process involves a short initial exploratory chat, followed by three interviews/discussions. The aim is for both sides to learn more about each other. The timeline is ~10 days unless you need more time.

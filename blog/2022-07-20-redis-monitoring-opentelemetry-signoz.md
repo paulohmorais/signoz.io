@@ -1,11 +1,11 @@
 ---
-title: Redis Monitoring with OpenTelemetry and SigNoz
+title: How to Monitor Redis Metrics with OpenTelemetry?
 slug: redis-opentelemetry
-date: 2023-04-04
+date: 2023-11-17
 tags: [Database Monitoring]
 authors: [ankit_anand]
 description: In this post, we will show you how to set up Redis monitoring with SigNoz - an open-source full-stack APM. SigNoz captures data using OpenTelemetry, which is becoming the world standard for instrumenting cloud-native applications. Apart from capturing metrics from your Redis server, you can also capture logs and traces with OpenTelemetry...
-image: /img/blog/2022/07/redis_monitoring_opentelemetry_signoz.webp
+image: /img/blog/2023/11/opentelemetry-redis-cover-min.jpg
 keywords:
   - redis
   - redis monitoring
@@ -21,11 +21,11 @@ keywords:
   <title>Redis Monitoring with OpenTelemetry and SigNoz</title>
 </head>
 
-In this post, we will show you how to set up Redis monitoring with SigNoz - an open-source full-stack APM. SigNoz captures data using OpenTelemetry, which is becoming the world standard for instrumenting cloud-native applications. Apart from capturing metrics from your Redis server, you can also capture logs and traces with OpenTelemetry.
+In this post, we will show you how to set up Redis metrics monitoring with OpenTelemetry. We will use OpenTelemetry Collector to collect metrics from Redis and send it to SigNoz for monitoring and visualization.
 
 <!--truncate-->
 
-![Cover Image](/img/blog/2022/07/redis_monitoring_opentelemetry_signoz.webp)
+![Cover Image](/img/blog/2023/11/opentelemetry-redis-cover.webp)
 
 
 ## What is OpenTelemetry?
@@ -144,9 +144,9 @@ uptime_in_seconds:10706
 
 Now you need to configure the OpenTelemetry Redis receiver. The collector settings are configured using `yaml` files.
 
-Open up the otel-collector-metrics-config.yaml file located at the following address inside the installation folder of SigNoz:
+Open up the otel-collector-config.yaml file located at the following address inside the installation folder of SigNoz:
 
-`deploy/docker/clickhouse-setup/otel-collector-metrics-config.yaml`
+`deploy/docker/clickhouse-setup/otel-collector-config.yaml`
 
 You need to make two changes to enable OpenTelemetry Collector to receive Redis metrics:
 
@@ -175,7 +175,7 @@ You need to make two changes to enable OpenTelemetry Collector to receive Redis 
      The above pipeline sets the Redis data pipeline in which it is received as Redis metrics and exported to be written in ClickHouse, the database used by SigNoz to store telemetry data.
     
 
-You can have a look at the `otel-collector-metrics-config.yaml` file on our [GitHub repo](https://github.com/SigNoz/signoz/blob/develop/deploy/docker/clickhouse-setup/otel-collector-metrics-config.yaml). The final config file along with Redis receiver looks like below:
+You can have a look at the `otel-collector-config.yaml` file on our [GitHub repo](https://github.com/SigNoz/signoz/blob/develop/deploy/docker/clickhouse-setup/otel-collector-config.yaml). The final config file along with Redis receiver looks like below:
 
 Note: We have configured the `redis endpoint` for Mac for this demo. You will need to update the endpoint based on your environment.
 
@@ -194,18 +194,6 @@ receivers:
           static_configs:
             - targets:
               - otel-collector:8888
-        # otel-collector-metrics internal metrics
-        - job_name: "otel-collector-metrics"
-          scrape_interval: 60s
-          static_configs:
-            - targets:
-              - localhost:8888
-        # SigNoz span metrics
-        - job_name: "signozspanmetrics-collector"
-          scrape_interval: 60s
-          static_configs:
-            - targets:
-              - otel-collector:8889
 	#Redis metrics receiver
   redis:
     endpoint: "host.docker.internal:6379"
@@ -282,13 +270,13 @@ Once the `yaml` configuration is done, you must restart your Docker containers t
 In the `deploy` folder, run the following command at your terminal to stop Docker containers:
 
 ```bash
-docker-compose -f docker/clickhouse-setup/docker-compose.yaml stop
+docker compose -f docker/clickhouse-setup/docker-compose.yaml stop
 ```
 
 Then use the following command to restart the Docker containers:
 
 ```bash
-docker-compose -f docker/clickhouse-setup/docker-compose.yaml up
+docker compose -f docker/clickhouse-setup/docker-compose.yaml up
 ```
 
 Once the containers are running again, you can use the `Dashboards` tab of SigNoz to create customized charts for monitoring your Redis instance.

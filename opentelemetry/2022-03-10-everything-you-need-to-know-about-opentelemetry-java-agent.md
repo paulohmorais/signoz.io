@@ -1,14 +1,14 @@
 ---
-title: Everything you need to know about OpenTelemetry Java agent
+title: OpenTelemetry Java Agent - Implement Observability With Zero Code Changes
 slug: java-agent
-date: 2023-09-10
+date: 2023-10-12
 tags: [java-monitoring]
 author: Ankit Anand
 author_title: SigNoz Team
 author_url: https://github.com/ankit01-oss
 author_image_url: https://avatars.githubusercontent.com/u/83692067?v=4
 description: The OpenTelemetry Java agent enables Java applications to generate and capture telemetry data automatically. It is very easy to get started...
-image: /img/blog/2021/08/opentelemetry_java_agent-min.png
+image: /img/blog/2023/10/otel-java-agent-cover-min.jpg
 keywords:
   - opentelemetry
   - opentelemetry java
@@ -21,7 +21,7 @@ OpenTelemetry emerged as a single project after the merging of OpenCensus(from G
 
 <!--truncate-->
 
-![Cover Image](/img/blog/2021/08/opentelemetry_java_agent-min.png)
+![Cover Image](/img/blog/2023/10/otel-java-agent-cover.webp)
 
 The OpenTelemetry Java agent enables Java applications to generate and capture telemetry data automatically. This article gives you a solid overview of the OpenTelemetry Java agent, including how it works. But first, let's take a short detour to understand what OpenTelemetry is.
 
@@ -143,7 +143,7 @@ cd signoz/deploy/
 ./install.sh
 ```
 
-[![Deployment Docs](/img/blog/common/deploy_docker_documentation.png)](https://signoz.io/docs/install/)
+[![Deployment Docs](/img/blog/common/deploy_docker_documentation.webp)](https://signoz.io/docs/install/)
 
 
 import Screenshot from "@theme/Screenshot"

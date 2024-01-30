@@ -9,7 +9,7 @@ const DataProtectionLaws = () => {
       <div className="container mt-5 mb-24">
         <div className="flex flex-col items-center mb-1 text-center">
           <Heading type={1}>
-            Worried about data protection laws?
+            Worried about data protection laws?&nbsp;
             <br className="hidden lg:inline" />
             We can help.
           </Heading>
@@ -29,21 +29,21 @@ const DataProtectionLaws = () => {
             <div className="flex flex-wrap gap-5 justify-center md:justify-start">
               <div className="flex gap-1 flex-col justify-center items-center md:items-start">
                 <img
-                  src="/img/landing/us.png"
+                  src="/img/landing/us.webp"
                   alt="flag of hosting available"
                 />
                 <span>US Cloud</span>
               </div>
               <div className="flex gap-1 flex-col justify-center items-center md:items-start">
                 <img
-                  src="/img/landing/eu.png"
+                  src="/img/landing/eu.webp"
                   alt="flag of hosting available"
                 />
                 <span>EU Cloud</span>
               </div>
               <div className="flex gap-1 flex-col justify-center items-center md:items-start">
                 <img
-                  src="/img/landing/india.png"
+                  src="/img/landing/india.webp"
                   alt="flag of hosting available"
                 />
                 <span>India Cloud</span>
@@ -64,7 +64,7 @@ const DataProtectionLaws = () => {
             <div className="flex flex-wrap gap-5 justify-center md:justify-start">
               <div className="flex gap-1 flex-col justify-center items-center md:items-start">
                 <img
-                  src="/img/landing/data-privacy.png"
+                  src="/img/landing/data-privacy.webp"
                   alt="data privacy available"
                 />
                 <span>Data Privacy</span>

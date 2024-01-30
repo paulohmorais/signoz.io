@@ -1,5 +1,5 @@
 ---
-title: OpenTelemetry Webinars - Gathering data with the OpenTelemetry Collector
+title: Gathering data with the OpenTelemetry Collector
 slug: gathering-data-with-opentelemetry-collector
 date: 2023-08-15
 tags: [OpenTelemetry]
@@ -17,7 +17,7 @@ keywords:
 import { LiteYoutubeEmbed } from "react-lite-yt-embed";
 
 <head>
-  <link rel="canonical" href="https://signoz.io/blog/otel-webinar-collector/"/>
+  <link rel="canonical" href="https://signoz.io/blog/gathering-data-with-opentelemetry-collector/"/>
 </head>
 
 Join <a href="https://github.com/serverless-mom" rel="nofollow">Nočnica Mellifera</a> and <a href="https://twitter.com/pranay01" rel="nofollow">Pranay</a> as they discuss architecting and collecting data with the OpenTelemetry Collector. We discuss using Apache Kafka queues to handle OTLP data, and why you probably shouldn't push OTel data straight to Postgres.
@@ -450,4 +450,4 @@ Thank you for taking out the time to read this transcript :) If you have any fee
 
 Feel free to join our Slack community and say hi! 👋 
 
-[![SigNoz Slack community](/img/blog/common/join_slack_cta.png)](https://signoz.io/slack)
+[![SigNoz Slack community](/img/blog/common/join_slack_cta.webp)](https://signoz.io/slack)

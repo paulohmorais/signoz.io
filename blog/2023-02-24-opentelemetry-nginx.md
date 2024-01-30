@@ -91,8 +91,6 @@ signoz-frontend-57bb96c66f-ch22x                    1/1     Running   0         
 
 Now let's see how to build the nginx container image with the OpenTelemetry module.
 
-If you are interested in how to create a kubernetes cluster with a multipass and k3s, checkout this [blog post](https://qdnqn.com/deploying-k3s-with-multipass-and-cloud-init/).
-
 ## Building nginx with the OpenTelemetry module
 
 All the container images are located in `package/docker` directory. Let's inspect the nginx Dockerfile.

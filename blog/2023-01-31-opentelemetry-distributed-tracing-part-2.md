@@ -345,7 +345,7 @@ serve -l 5000 u
 ```
 
 <figure data-zoomable align='center'>
-    <img src="/img/blog/2022/03/serve_ui_port.png" alt="Running sample app UI"/>
+    <img src="/img/blog/2022/03/serve_ui_port.webp" alt="Running sample app UI"/>
     <figcaption><i>Running sample app UI</i></figcaption>
 </figure>
 
@@ -445,7 +445,7 @@ You will be able to see the Flamegraph of the selected span which shows how the 
 <br></br>
     
 
-SigNoz also provides a detailed view of common [semantic conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/http.md) like HTTP, network, and other attributes. The end-to-end tracing of user requests can help you to identify latency issues quickly.
+SigNoz also provides a detailed view of common [semantic conventions](https://github.com/open-telemetry/semantic-conventions) like HTTP, network, and other attributes. The end-to-end tracing of user requests can help you to identify latency issues quickly.
     
 
 ## Conclusion
@@ -458,7 +458,7 @@ OpenTelemetry and SigNoz provide a great open-source solution to implement distr
 
 If you have any questions or need any help in setting things up, join our slack community and ping us in `#support` channel.
 
-[![SigNoz Slack community](/img/blog/common/join_slack_cta.png)](https://signoz.io/slack)
+[![SigNoz Slack community](/img/blog/common/join_slack_cta.webp)](https://signoz.io/slack)
 
 
 ---

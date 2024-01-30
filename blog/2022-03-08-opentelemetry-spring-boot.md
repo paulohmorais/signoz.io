@@ -1,11 +1,14 @@
 ---
-title: OpenTelemetry Spring Boot Tutorial - complete implementation guide
+title: Monitoring your Spring Boot Application using OpenTelemetry
 slug: opentelemetry-spring-boot
-date: 2023-09-14
+date: 2024-01-24
 tags: [OpenTelemetry Instrumentation, Java]
 authors: ankit_anand
-description: End-to-end performance monitoring of Spring Boot application with OpenTelemetry. Set up distributed tracing, collect JVM metrics and logs from Spring Boot applications and visualize the collected data with open source APM - SigNoz.
-image: /img/blog/2022/03/opentelemetry_spring_boot.jpeg
+description: Using OpenTelemetry libraries, you can instrument your Java applications for end-to-end tracing. You can then send the traces to an OpenTelemetry-native APM like SigNoz for monitoring visualization...
+image: /img/blog/2024/01/opentelemetry-spring-boot-cover-min.jpg
+hide_table_of_contents: false
+toc_min_heading_level: 2
+toc_max_heading_level: 2
 keywords:
   - OpenTelemetry
   - opentelemetry spring boot
@@ -23,17 +26,19 @@ import { LiteYoutubeEmbed } from "react-lite-yt-embed";
 </head>
 
 
-OpenTelemetry can auto-instrument your Java Spring Boot application to capture telemetry data from a number of popular libraries and frameworks that your application might be using. It can be used to collect logs, metrics, and traces from your Spring Boot application. Let's learn how it works.
+OpenTelemetry can auto-instrument your Java Spring Boot application to capture telemetry data from a number of popular libraries and frameworks that your application might be using. It can be used to collect logs, metrics, and traces from your Spring Boot application. In this tutorial, we will integrate OpenTelemetry with a Spring Boot application for traces and logs.
 
 <!--truncate-->
 
-![Cover Image](/img/blog/2022/03/opentelemetry_spring_boot.webp)
+![Cover Image](/img/blog/2024/01/opentelemetry-spring-boot-cover.webp)
 
-OpenTelemetry is a vendor-agnostic instrumentation library that is used to generate telemetry data like logs, metrics, and traces. Using OpenTelemetry and SigNoz, you can collect logs, metrics, and traces and visualize everything under a single pane of glass. 
+OpenTelemetry is a vendor-agnostic instrumentation library that is used to generate telemetry data like logs, metrics, and traces. Using OpenTelemetry and SigNoz, you can collect logs, metrics, and traces and visualize everything under a single pane of glass.
 
-In this article, let's explore how you can auto-instrument your Java Spring Boot application with OpenTelemetry and get the data reported through SigNoz. We will also learn how to collect JVM metrics and logs.
+For Java applications, OpenTelemetry provides a handy Java agent Jar that can be attached to any Java 8+ application and dynamically injects bytecode to capture telemetry from a number of popular libraries and frameworks.
 
-But before that, let's have a brief overview of OpenTelemetry.
+In this tutorial, you will learn how to use the Java agent for generating traces and logs automatically from your Spring Boot application. You can use tracing data to visualize the flow of requests in your application. If you're using an OpenTelemetry-native APM like SigNoz, you can also get application performance metrics like request rates, latency (p99, p90, etc.), and error rates with your tracing data.
+
+Before the demo begins, let's have a brief overview of OpenTelemetry.
 
 ## What is OpenTelemetry?
 
@@ -68,7 +73,7 @@ OpenTelmetry can collect data for many popular frameworks and libraries automati
 If you want more application-specific data, OpenTelemetry SDK provides you with the capabilities to capture that data using OpenTelemetry APIs and SDKs.
 
 
-For Spring Boot applications, we can use the OpenTelemetry Java Jar agent. We just need to download the latest version of the Java Jar agent and run the application with it.
+For a Java Spring Boot application, we can use the OpenTelemetry Java Jar agent to instrument the application. The agent is capable of capturing telemetry data from various popular libraries and frameworks used in the application.
 
 
 <figure data-zoomable align='center'>
@@ -76,82 +81,56 @@ For Spring Boot applications, we can use the OpenTelemetry Java Jar agent. We ju
     <figcaption><i>OpenTelemetry helps generate and collect telemetry data from Spring Boot applications which can then be sent to SigNoz for storage, visualization, and analysis.</i></figcaption></figure>
 <br></br>
 
-OpenTelemetry does not provide storage and visualization layer for the collected data. The advantage of using OpenTelemetry is that it can export the collected data in many different formats. So you're free to choose your telemetry backend. Natively, OpenTelemetry supports a wire protocol known as `OTLP`. This protocol sends the data to OpenTelemetry Collector as shown in the diagram above.
+OpenTelemetry does not provide storage and visualization layer for the collected data. The advantage of using OpenTelemetry is that it can export the collected data in many different formats. So you're free to choose your telemetry backend. 
 
-In this tutorial, we will use [SigNoz](https://signoz.io/docs/), an open-source APM as the backend and visualization layer.
+In this tutorial, we will use [SigNoz](https://signoz.io/docs/), an OpenTelemetry-native APM as the backend and visualization layer.
 
-Steps to get started with OpenTelemetry for Spring Boot application:
+Steps to integrate OpenTelemetry with your Spring Boot application.
 
-- Installing SigNoz
-- Installing sample Spring Boot app
-- Auto instrumentation with OpenTelemetry and sending data to SigNoz
+1. [Seting up SigNoz](#step-1---setting-up-signoz)
+1. [Setting up Sample Spring Boot Application](#step-2---set-up-sample-spring-boot-application)
+3. [Downloading OpenTelemetry Java Agent Jar](#step-3---downloading-opentelemetry-java-agent-jar)
+4. [Running the application with Java Agent Jar](#step-4---running-the-application-with-relevant-environment-variables)
+5. [Monitoring application with SigNoz](#step-5---monitoring-your-spring-boot-application-in-signoz)
 
-## Installing SigNoz
+## Prerequisites
 
-SigNoz can be installed on macOS or Linux computers in just three steps by using a simple install script.
+- [SigNoz Cloud account](https://signoz.io/teams/)
+- Java 8 or Higher (<a href = "https://www.java.com/en/" rel="noopener noreferrer nofollow" target="_blank" >Download here</a>)
 
-The install script automatically installs Docker Engine on Linux. However, on macOS, you must manually install <a href = "https://docs.docker.com/engine/install/" rel="noopener noreferrer nofollow" target="_blank" >Docker Engine</a> before running the install script.
+
+## Step 1 - Setting up SigNoz
+
+You need a backend to which you can send the collected data for monitoring and visualization. [SigNoz](https://signoz.io/) is an OpenTelemetry-native APM that is well-suited for visualizing OpenTelemetry data.
+
+SigNoz cloud is the easiest way to run SigNoz. You can sign up [here](https://signoz.io/teams/) for a free account and get 30 days of free uncapped usage.
+
+[![Try SigNoz Cloud CTA](/img/blog/2024/01/opentelemetry-collector-try-signoz-cloud-cta.webp)](https://signoz.io/teams/)
+
+You can also install and self-host SigNoz yourself. Check out the [docs](https://signoz.io/docs/install/) for installing self-host SigNoz.
+
+## Step 2 - Setting up Sample Spring Boot application
+
+For this tutorial, we will use the popular <a href = "https://github.com/SigNoz/spring-petclinic" rel="noopener noreferrer nofollow" target="_blank" >Spring PetClinic application</a> and integrate it with OpenTelemetry. 
+
+The Spring PetClinic application is a well-known sample application used to demonstrate the capabilities of the Spring Framework in Java. It is a web application that uses Spring MVC (Model-View-Controller) to handle web requests, manage controllers, and render views. You can read more about it [here](https://spring-petclinic.github.io/).
+
+**Git clone the repository and go to the root folder:**
 
 ```bash
-git clone -b main https://github.com/SigNoz/signoz.git
-cd signoz/deploy/
-./install.sh
+git clone https://github.com/SigNoz/spring-petclinic.git
+cd spring-petclinic
 ```
 
-You can visit our [documentation](https://signoz.io/docs/install/) for instructions on how to install SigNoz using various methods.
 
-You can also sign up for [SigNoz cloud](https://signoz.io/teams/). The cloud version gives you access to some paid-only features as well as customer support. You can try SigNoz cloud for free for 30 days.
+**Run the application using the following commands:**
 
-When you are done installing SigNoz, you can access the UI at [http://localhost:3301](http://localhost:3301/application)
-
-<figure data-zoomable>
-    <img src="/img/blog/2022/02/signoz_dashboard.webp" alt="SigNoz dashboard"/>
-    <figcaption><i>SigNoz dashboard - It shows services from a sample app that comes bundled with the application</i></figcaption>
-</figure>
-
-<br></br>
-
-<!-- You can get started with SigNoz using just three commands at your terminal.
-
-```jsx
-git clone -b main https://github.com/SigNoz/signoz.git
-cd signoz/deploy/
-./install.sh
 ```
-<br></br>
+./mvnw package
+java -jar target/*.jar
+```
 
-For detailed instructions, you can visit our documentation.
-
-[![Deployment Docs](/img/blog/common/deploy_docker_documentation.webp)](https://signoz.io/docs/install/)
-
-When you are done installing SigNoz, you can access the UI at: [http://localhost:3301](http://localhost:3301/application)
-
-The application list shown in the dashboard is from a sample app called HOT R.O.D that comes bundled with the SigNoz installation package. -->
-
-## Installing sample Spring Boot app
-
-If you don't have Java installed, first install it from the <a href = "https://www.java.com/en/" rel="noopener noreferrer nofollow" target="_blank" >official website</a>.
-
-For this tutorial, we will use a sample Spring Boot application built using Maven. You can find the code for the application at its <a href = "https://github.com/SigNoz/spring-petclinic" rel="noopener noreferrer nofollow" target="_blank" >GitHub repo</a>.
-
-Steps to get the app set up and running:
-
-1. **Git clone the repository and go to the root folder**
-
-   ```jsx
-   git clone https://github.com/SigNoz/spring-petclinic.git
-   cd spring-petclinic
-   ```
-
-
-2. **Run the application using the following commands.**
-
-   ```
-   ./mvnw package
-   java -jar target/*.jar
-   ```
-
-   You can now access the application UI here: [http://localhost:8090/](http://localhost:8090/)
+If your application runs successfully, you will be able to access the application UI here: [http://localhost:8090/](http://localhost:8090/)
 
 <figure data-zoomable>
     <img src="/img/blog/2022/03/spring_boot_app.webp" alt="Spring PetClinic app accessed at port:8090"/>
@@ -162,51 +141,62 @@ Steps to get the app set up and running:
 
 Once you ensure that your application runs fine, stop it with `ctrl + c` on mac, as we will be launching the application with the Java agent downloaded from OpenTelemetry.
 
-## Auto instrumentation with OpenTelemetry and sending data to SigNoz
+## Step 3 - Downloading OpenTelemetry Java agent JAR
 
-For instrumenting Java applications, OpenTelemetry has a very handy Java JAR agent that can be attached to any Java 8+ application. The JAR agent can detect a number of <a href = "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md" rel="noopener noreferrer nofollow" target="_blank" >popular libraries and frameworks</a> and instrument it right out of the box. You don't need to add any code for that.
+Download the [latest Java agent JAR](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar). You will need the path of this file, so note it down somewhere. You can also use the terminal to get this file using the following command:
 
-The auto-instrumentation takes care of generating traces from the application. SigNoz uses the trace data to report key application metrics like p99 latency, request rates, and error rates with out-of-box charts and visualization. Let's learn how to enable auto-instrumentation.
+```
+wget https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
+```
+
+OpenTelemetry Java agent JAR  can be attached to any Java 8+ application. The agent JAR  can detect a number of <a href = "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md" rel="noopener noreferrer nofollow" target="_blank" >popular libraries and frameworks</a> and instrument it right out of the box. You don't need to add any code for that.
+
+The auto-instrumentation takes care of generating traces and logs from the application. SigNoz uses the trace data to report key application metrics like p99 latency, request rates, and error rates with out-of-box charts and visualization.
+
+You will also be able to capture logs with it and send it to SigNoz.
+
+## Step 4 - Running the application with relevant environment variables
+
+You need to run your Spring Boot application along with the instrumentation agent. You can do so by the following command:
+
+```bash
+OTEL_RESOURCE_ATTRIBUTES=service.name=<app_name> \
+OTEL_EXPORTER_OTLP_HEADERS="signoz-access-token=SIGNOZ_INGESTION_KEY" \
+OTEL_EXPORTER_OTLP_ENDPOINT=https://ingest.{region}.signoz.cloud:443 \
+java -javaagent:java-agent/opentelemetry-javaagent.jar -jar target/*.jar
+```
+
+You can get SigNoz ingestion key and region from your SigNoz cloud account in Settings --> Ingestion Settings.
+
+<figure data-zoomable align='center'>
+    <img src="/img/blog/common/ingestion-key-details.webp" alt="Find ingestion settings in SigNoz dashboard"/>
+    <figcaption><i>Find ingestion settings in SigNoz dashboard</i></figcaption>
+</figure>
+<br/>
 
 
-1. Download the [latest Java JAR agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar). You will need the path of this file, so note it down somewhere. You can also use the terminal to get this file using the following command:
-   ```
-   wget https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
-   ```
+Your final command might look like this:
 
-2. Now you need to enable the instrumentation agent as well as run your sample application. You can do so by the following command:
-   ```
-   OTEL_EXPORTER_OTLP_ENDPOINT="http://<IP of SigNoz>:4317" OTEL_RESOURCE_ATTRIBUTES=service.name=javaApp java -javaagent:/path/opentelemetry-javaagent.jar -jar target/*.jar
-   ```
+```bash
+OTEL_RESOURCE_ATTRIBUTES=service.name=spring-boot-app \
+OTEL_EXPORTER_OTLP_HEADERS="signoz-access-token=7XXXXX7-6XXxX-45ff-9XX1-3bXxXXf9cdc3" \
+OTEL_EXPORTER_OTLP_ENDPOINT=https://ingest.in.signoz.cloud:443 \
+java -javaagent:java-agent/opentelemetry-javaagent.jar -jar target/*.jar
+```
 
-   <br></br>As you are running this on your local host, you need to replace `IP of SigNoz` with `localhost`. You will also need to update the path for your downloaded Java JAR agent. You will replace following two things:
+Note that you would need to use the environment variables from your SigNoz cloud account.
 
-   - `IP of SigNoz` : `localhost`
-   - `/path/to` :  `Users/cruxaki/Downloads` (For my local)
-   
-   Your final command will look like this:
-   ```
-   OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4317" OTEL_RESOURCE_ATTRIBUTES=service.name=javaApp java -javaagent:/Users/cruxaki/Downloads/opentelemetry-javaagent.jar -jar target/*.jar
-   ```
+## Step 5 - Monitoring your Spring Boot Application in SigNoz
 
-   <br></br>Note the path is updated for my local environment. If you are using a virtual machine, you need to update the IP accordingly. You also need to have the Java JAR agent on the same machine.
+Check out the Spring Pet Clinic app at: [http://localhost:8090/](http://localhost:8090/) and play around with it to generate some load. You can try refreshing the endpoint multiple times to generate load. Now you open the `Services` tab of SigNoz dashboard to see your Spring Boot Application being monitored.
 
-   You can also use `-D` option to install the java agent.
+When you sign up, you will get an onboarding flow for Java application. You can follow it to instrument your own Spring Boot application too.
 
-   ```bash
-   java -javaagent:/path/opentelemetry-javaagent.jar \
-    -Dotel.exporter.otlp.endpoint=http://<IP of SigNoz>:4317 \
-    -Dotel.resource.attributes=service.name=<service_name> \
-    -jar target/*.jar
-   ```
-
-Check out the Spring Pet Clinic app at: [http://localhost:8090/](http://localhost:8090/) and play around with it to generate some load. You can try refreshing the endpoint multiple times to generate load. It might take 1-2 minutes before it starts showing up in the SigNoz dashboard.
-
-Below you can find your javaApp in the list of applications being monitored.
+Below you can find your Spring Boot application in the list of applications being monitored.
 
 <figure data-zoomable>
-    <img src="/img/blog/2022/03/java_app_signoz_dashboard.webp" alt="`Javaapp` appears in the list of applications monitored through SigNoz"/>
-    <figcaption><i>javaApp in the list of applications monitored</i></figcaption>
+    <img className="box-shadowed-image" src="/img/blog/2024/01/opentelemetry-spring-boot-apm.webp" alt="Spring Boot application monitoring with OpenTelemetry"/>
+    <figcaption><i>Spring Boot application monitoring in SigNoz with p99 latency, error rate, and ops per second</i></figcaption>
 </figure>
 
 <br></br>
@@ -215,49 +205,34 @@ Below you can find your javaApp in the list of applications being monitored.
 
 SigNoz makes it easy to visualize metrics and traces captured through OpenTelemetry instrumentation.
 
-SigNoz comes with out of box RED metrics charts and visualization. RED metrics stands for:
+SigNoz comes with out of box RED metrics charts and visualization based on your trace data. You get following out-of-box charts for your Spring Boot application:
 
 - Rate of requests
 - Error rate of requests
 - Duration taken by requests
+- Apdex
+- Top endpoints in your application
+
+And you can monitor all of this without any code change, just by integrating your Spring Boot application with OpenTelemetry Java agent JAR.
+
 
 <figure data-zoomable>
-    <img src="/img/blog/common/signoz_charts_application_metrics.webp" alt="SigNoz dashboard showing application latency, requests per sec, error percentage and top endpoints"/>
-    <figcaption><i>Measure things like application latency, requests per sec, error percentage and see your top endpoints with SigNoz.</i></figcaption>
+    <img className="box-shadowed-image" src="/img/blog/2024/01/opentelemetry-spring-boot-red-metrics.webp" alt="SigNoz dashboard showing application latency, requests per sec, error percentage and top endpoints"/>
+    <figcaption><i>Measure things like application latency, requests per sec, error percentage, apdex and see your top endpoints with SigNoz.</i></figcaption>
 </figure>
 
 <br></br>
 
-You can then choose a particular timestamp where latency is high to drill down to traces around that timestamp.
+You can also visualize your trace data with flamegraphs and Gantt charts to see the flow of requests. This comes in very handy while debugging performance related issues.
 
 <figure data-zoomable>
-    <img src="/img/blog/common/signoz_list_of_traces_hc.webp" alt="List of traces shown on SigNoz dashboard"/>
-    <figcaption><i>View of traces at a particular timestamp</i></figcaption>
+    <img className="box-shadowed-image" src="/img/blog/2024/01/opentelemetry-spring-boot-traces-flamegraphs.webp" alt="OpenTelemetry Spring Boot Monitoring with trace data visualized as flamegraphs"/>
+    <figcaption><i>See how requests flow through your Spring Boot application with flamegraphs and Gantt charts in SigNoz dashboard</i></figcaption>
 </figure>
 
 <br></br>
 
-You can use flamegraphs to exactly identify the issue causing the latency.
-
-<figure data-zoomable>
-    <img src="/img/blog/common/signoz_flamegraphs.webp" alt="Flamegraphs and gantt charts to visualize time taken by requests"/>
-    <figcaption><i>Flamegraphs showing exact duration taken by each spans - a concept of distributed tracing</i></figcaption>
-</figure>
-
-<br></br>
-
-You can also build custom metrics dashboard for your infrastructure.
-
-<figure data-zoomable>
-    <img src="/img/blog/common/signoz_custom_dashboard-min.webp" alt="SigNoz custom metrics dashboard"/>
-    <figcaption><i>You can also build a custom metrics dashboard for your infrastructure</i></figcaption>
-</figure>
-
-<br></br>
-
-
-## Collecting JVM metrics from your Spring Boot application
-
+<!-- ## Collecting JVM metrics from your Spring Boot application
 
 This section shows you how you can visualise JVM metrics from Spring Boot applications in SigNoz.
 
@@ -296,20 +271,16 @@ You can use a sample Spring Boot application at this <a href = "https://github.c
    management.endpoint.prometheus.enabled=true
    ```
 
-   <br></br>
+   Here's the <a href = "https://github.com/SigNoz/spring-petclinic/commit/5c4d041d43c5b1b0d07ea3bc9f0ad9a3a8b49526" rel="noopener noreferrer nofollow" target="_blank" >sample Spring Boot application</a> with needed changes.
 
-   <a href = "https://github.com/SigNoz/spring-petclinic/commit/5c4d041d43c5b1b0d07ea3bc9f0ad9a3a8b49526" rel="noopener noreferrer nofollow" target="_blank" >Sample Spring Boot app with needed changes</a>
-
-3. **Build the Spring Boot application again**
-
-
-You can read more on how to expose Prometheus metric from <a href = "https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.metrics.export.prometheus" rel="noopener noreferrer nofollow" target="_blank" >Spring Boot docs</a>.
+3. **Build the Spring Boot application again**<br></br>
+     You can read more on how to expose Prometheus metric from <a href = "https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.metrics.export.prometheus" rel="noopener noreferrer nofollow" target="_blank" >Spring Boot docs</a>.
 
 ### Configure SigNoz otel-collector to scrape Prometheus metrics
 
-1. **Add the following code in `otel-collector-metrics-config.yaml` file**
+1. **Add the following code in `otel-collector-config.yaml` file**
    
-   <a href = "https://github.com/SigNoz/signoz/blob/main/deploy/docker/clickhouse-setup/otel-collector-metrics-config.yaml" rel="noopener noreferrer nofollow" target="_blank" >SigNoz Otel collector yaml file</a><br></br>
+   <a href = "https://github.com/SigNoz/signoz/blob/main/deploy/docker/clickhouse-setup/otel-collector-config.yaml" rel="noopener noreferrer nofollow" target="_blank" >SigNoz Otel collector yaml file</a><br></br>
 
    :::note
    Target should be updated to the IP and port where Spring Boot app is exposing metrics.
@@ -336,7 +307,7 @@ You can read more on how to expose Prometheus metric from <a href = "https://doc
 2. **Restart otel-collector metrics using the following command**
    
    ```jsx
-   sudo docker-compose -f docker-compose.yaml restart otel-collector-metrics
+   sudo docker compose -f docker-compose.yaml restart otel-collector
    ```
 
 3. **Go to SigNoz dashboard and plot metrics you want**
@@ -392,45 +363,50 @@ hikaricp_connections_idle
 tomcat_sessions_active_current_sessions
 process_uptime_seconds
 hikaricp_connections_acquire_seconds_max
+``` -->
+
+## Collecting Spring Boot application logs with OpenTelemetry Java agent JAR
+
+The OpenTelemetry Java agent JAR also captures logs from Java applications. You can also configure popular Java logging libraries like <a href = "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-context-data/log4j-context-data-2.17/library-autoconfigure" rel="noopener noreferrer nofollow" target="_blank" >Log4j2</a> and <a href = "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/logback/logback-mdc-1.0/library/README.md" rel="noopener noreferrer nofollow" target="_blank" >logback</a> to work with OpenTelemetry Java agent JAR.
+
+For getting logs, you need to add an environment variable `OTEL_LOGS_EXPORTER` to your run command. Your run command will look like below:
+
+```bash
+OTEL_LOGS_EXPORTER=otlp \
+OTEL_RESOURCE_ATTRIBUTES=service.name=spring-boot-app 
+OTEL_EXPORTER_OTLP_HEADERS=signoz-access-token="7XXXXX7-6XXxX-45ff-9XX1-3bXxXXf9cdc3" \
+OTEL_EXPORTER_OTLP_ENDPOINT=https://ingest.in.signoz.cloud:443 \
+java -javaagent:java-agent/opentelemetry-javaagent.jar -jar target/*.jar
 ```
 
-## Collecting logs from your Spring Boot application
-
-OpenTelemetry also supports collecting logs from your Spring Boot application. SigNoz provides logs, metrics, and traces under a single pane of glass. OpenTelemetry aims to support legacy logging pipelines and you can connect your existing log pipeline to OpenTelemetry collector to send your logs to SigNoz. Read our [logs documentation](https://signoz.io/docs/userguide/logs/) to get started.
+You can go to the logs tab of SigNoz and apply filter for your `service.name` to see logs from your Spring Boot application.
 
 <figure data-zoomable align='center'>
-    <img src="/img/blog/common/signoz_logs.webp" alt="Log management in SigNoz"/>
-    <figcaption><i>Log management in SigNoz</i></figcaption>
+    <img className="box-shadowed-image" src="/img/blog/2024/01/opentelemetry-spring-boot-logs-apply-filter.webp" alt="Apply filter to see OpenTelemetry Spring Boot logs"/>
+    <figcaption><i>Apply filter for your service name to see logs from your Spring Boot application</i></figcaption>
+</figure>
+
+<br></br>
+
+You can see your logs in different compact veiws like raw, default, and column. You can also plot time-series and create alerts on it. SigNoz logs query builder is really powerful with fields for filter, group by, and aggregate options.
+
+<figure data-zoomable align='center'>
+    <img className="box-shadowed-image" src="/img/blog/2024/01/opentelemetry-spring-boot-logs-listview-raw.webp" alt="OpenTelemetry Spring Boot logs in raw view in SigNoz"/>
+    <figcaption><i>See raw view of Spring Boot logs in SigNoz</i></figcaption>
 </figure>
 
 <br></br>
 
 ## Conclusion
 
-OpenTelemetry makes it very convenient to instrument your Spring Boot application and collect telemetry data like logs, metrics, and traces. You can then use an open-source APM tool like SigNoz to analyze the performance of your app. As SigNoz offers a full-stack observability tool, you don't have to use multiple tools for your monitoring needs.
+OpenTelemetry makes it very convenient to instrument your Spring Boot application and collect telemetry data like logs, metrics, and traces. You can then use an open-source APM tool like SigNoz to analyze the performance of your app. With OpenTelemetry and SigNoz, you can implement full-stack observability for your Spring Boot applications.
 
-You can try out SigNoz by visiting its GitHub repo 👇
-
-<div class="text--center">
-
-[![SigNoz repo](/img/blog/common/signoz_github.webp)](https://github.com/signoz/signoz)
-
-</div>
-
-<br></br>
-If you are someone who understands more from video, then you can watch the tutorial on how to use OpenTelemetry for Spring Boot application here 👇
-
-<p>&nbsp;</p>
-
-<LiteYoutubeEmbed id="YxZb17_LYwQ" mute={false} />
-
-<p>&nbsp;</p>
-
-If you have any questions or need any help in setting things up, join our slack community and ping us in `#support` channel.
-
-[![SigNoz Slack community](/img/blog/common/join_slack_cta.png)](https://signoz.io/slack)
-
-
-If your Spring Boot application is based on microservices architecture, check out this blog 👇
+If your Spring Boot application is based on microservices architecture, check out this tutorial 👇
 
 [Implementing Distributed Tracing in a Java application](https://signoz.io/blog/distributed-tracing-java/)
+
+---
+
+**Further Reading**
+
+[OpenTelemetry Collector Complete Guide](https://signoz.io/blog/opentelemetry-collector-complete-guide/)

@@ -1,11 +1,11 @@
 ---
 title: Open Source Single Pane of Glass Monitoring | SigNoz
 slug: single-pane-of-glass-monitoring
-date: 2022-08-24
+date: 2023-10-10
 tags: [SigNoz, Open Source]
 authors: [ankit_anand]
 description: Single plane of glass monitoring integrates the key aspects of monitoring an IT system to bring application and infrastructure monitoring under a single set of dashboards where it’s easy to correlate data for debugging performance issues...
-image: /img/blog/2022/06/single_pane_of_glass_monitoring_cover.webp
+image: /img/blog/2023/10/single-pane-of-glass-cover-min.jpg
 keywords:
   - single pane of glass monitoring
   - open source
@@ -23,7 +23,7 @@ Single pane of glass monitoring is a term used to denote monitoring applications
 
 <!--truncate-->
 
-![Cover Image](/img/blog/2022/06/single_pane_of_glass_monitoring_cover.webp)
+![Cover Image](/img/blog/2023/10/single-pane-of-glass-cover.webp)
 
 Most modern applications are now built using distributed software systems. Applications use distributed application architectures like microservices and serverless to serve user demands at a global scale. It gets deployed using container orchestration tools like Kubernetes on distributed infrastructure that might be using a hybrid cloud environment.
 
@@ -60,7 +60,7 @@ While these tools are great at their specific use cases, they do not provide a s
 
 OpenTelemetry is an open source project under Cloud Native Computing Foundation that is very suited to instrument cloud-native applications for telemetry data. OpenTelemetry provides freedom to choose any backend analysis tool freeing you from any vendor lock-in.
 
-SigNoz provides both metrics monitoring and distributed tracing. You can also correlate metrics and traces easily with a single click. You can also create custom dashboards for monitoring your infrastructure. Let’s see how SigNoz fits the case for a single pane of glass monitoring with its features.
+SigNoz provides logs, metrics, and traces under a single pane of glass. You can also correlate metrics and traces easily with a single click. You can also create custom dashboards for monitoring your infrastructure. Let’s see how SigNoz fits the case for a single pane of glass monitoring with its features.
 
 ### Metrics Monitoring
 
@@ -86,10 +86,10 @@ Distributed tracing is an important technology aimed at solving performance issu
 
 SigNoz also lets you run aggregates on trace data. Running aggregates on tracing data enables you to create service-centric views, providing insights to debug applications at the service level. It also makes sense for engineering teams as they own specific microservices.
 
-<!-- ![Running aggregates on your tracing data enables you to create service-centric views](Single%20Pane%20of%20Glass%20Monitoring%20with%20Open%20Source%20S%204cb8862202684b4bb545d5e9a7cbae5f/Untitled.png) -->
+<!-- ![Running aggregates on your tracing data enables you to create service-centric views](Single%20Pane%20of%20Glass%20Monitoring%20with%20Open%20Source%20S%204cb8862202684b4bb545d5e9a7cbae5f/Untitled.webp) -->
 
 <figure data-zoomable align='center'>
-    <img src="/img/blog/2022/06/otel_backend_running_aggregates.png" alt="Running aggregates on trace data"/>
+    <img src="/img/blog/2022/06/otel_backend_running_aggregates.webp" alt="Running aggregates on trace data"/>
     <figcaption><i>Running aggregates on your tracing data enables you to create service-centric views</i></figcaption>
 </figure>
 
@@ -102,7 +102,7 @@ Logs are part of every developer's workflow, and gives the most granular informa
 SigNoz also provides log management with advanced features like log query builder, search across multiple fields, structured table view, JSON view, etc.
 
 <figure data-zoomable align='center'>
-    <img src="/img/blog/2022/08/signoz_log_management.webp" alt="Log Management in SigNoz"/>
+    <img src="/img/blog/common/signoz_logs.webp" alt="Log Management in SigNoz"/>
     <figcaption><i>Log management in SigNoz</i></figcaption>
 </figure>
 
@@ -114,7 +114,7 @@ SigNoz also provides log management with advanced features like log query builde
 OpenTelemetry provides <a href = "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver" rel="noopener noreferrer nofollow" target="_blank">receivers</a> for receiving metrics from metrics exporters of a lot of common technologies. Using these receivers, you can build custom dashboards for your infrastructure with SigNoz.
 
 <figure data-zoomable align='center'>
-    <img src="/img/blog/2022/06/k8s_node_monitoring.webp" alt="Node metrics monitoring with SigNoz"/>
+    <img src="/img/blog/common/signoz-infra-metrics.webp" alt="Node metrics monitoring with SigNoz"/>
     <figcaption><i>Using OpenTelemetry receivers, you can create custom dashboards with SigNoz. For example, this is a custom dashboard for Kubernetes host metrics monitoring</i></figcaption>
 </figure>
 
@@ -130,7 +130,7 @@ SigNoz can also help you monitor exceptions in your application code. You can mo
 You can also dig deeper into the exceptions with its stacktrace.
 
 <figure data-zoomable align='center'>
-    <img src="/img/blog/2022/05/signoz_stacktrace.webp" alt="Stacktrace on exceptions caught"/>
+    <img src="/img/blog/common/signoz_stacktrace.webp" alt="Stacktrace on exceptions caught"/>
     <figcaption><i>Dig Deeper into your exceptions with stacktrace</i></figcaption>
 </figure>
 

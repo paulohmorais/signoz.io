@@ -1,11 +1,11 @@
 ---
-title: Top 13 open source APM tools in 2023
+title: Top 13 open source APM tools in 2024
 slug: open-source-apm-tools
-date: 2023-06-05
+date: 2023-12-22
 tags: [Tech Resources]
 authors: ankit_anand
 description: Looking for an open source APM tool? Latest top open source APM tool list - 1.SigNoz 2.Graphite 3.Pinpoint 4.Prometheus 5.JavaMelody 6.StageMonitor 7.Scouter 8.Zipkin 9.Jaeger 10.Skywalking...
-image: /img/blog/2023/01/open_source_apm_tools_cover-min.jpg
+image: /img/blog/2023/01/open-source-apm-tools-cover.jpeg
 hide_table_of_contents: true
 keywords:
   - Open Source
@@ -17,11 +17,13 @@ keywords:
   <link rel="canonical" href="https://signoz.io/blog/open-source-apm-tools/"/>
 </head>
 
+import GetStartedSigNoz from '../docs/shared/get-started-signoz.md';
+
 Choosing the right APM tool is critical. How do you know which is the right one for you? Here are the top 13 open source application performance monitoring(APM) tools which can solve your monitoring needs.
 
 <!--truncate-->
 
-![Cover Image](/img/blog/2023/01/open_source_apm_tools_cover.webp)
+![Cover Image](/img/blog/2023/01/open-source-apm-tools-cover.webp)
 
 > **What is an open source APM tool?**<br></br>
 > APM stands for Application Performance Monitoring. APM tools help you to monitor your application for any performance issues. When you opt for an open source APM tool, you get the added advantage of having access to the tool's source code. 
@@ -66,7 +68,7 @@ A few essential APM benefits in solving performance issues are as follows:
 - **Increase revenue** by protecting against downtime and user churn
 - **Saves engineering bandwidth** in debugging and troubleshooting
 
-**List of top 13 open source APM tools in 2023**
+**List of top 13 open source APM tools in 2024**
 
  - [SigNoz](#signoz)
  - [Graphite](#graphite)
@@ -84,7 +86,7 @@ A few essential APM benefits in solving performance issues are as follows:
 
 ## Top Open Source APM Tools
 
-Now let's explore the top 13 open source APM tools in 2023.
+Now let's explore the top 13 open source APM tools in 2024.
 
 ### SigNoz
 
@@ -94,7 +96,7 @@ Now let's explore the top 13 open source APM tools in 2023.
 
 <br></br>
 
-- **Github stars:** 13k
+- **Github stars:** 15.7k
 - **Alternative to:** Datadog, New Relic, Dynatrace
 - [SigNoz on GitHub](https://github.com/SigNoz/signoz)
 
@@ -506,25 +508,12 @@ Logs, metrics, and traces form the three cornerstones of full-stack APM tools. I
 
 ## Getting started with SigNoz
 
-You can get started with SigNoz using just three commands at your terminal.
+<GetStartedSigNoz />
 
-```jsx
-git clone -b main https://github.com/SigNoz/signoz.git
-cd signoz/deploy/
-./install.sh
-```
-<br></br>
+---
 
-For detailed instructions, you can visit our documentation.
+**Further Reading**
 
-[![Deployment Docs](/img/blog/common/deploy_docker_documentation.webp)](https://signoz.io/docs/install/)
-
-You can check out SigNoz's GitHub repo here 👇
-
-[![SigNoz GitHub repo](/img/blog/common/signoz_github.webp)](https://github.com/SigNoz/signoz)
-
-If you want to read more about SigNoz 👇
-
-[Golang Application Performance Monitoring with SigNoz](/blog/monitoring-your-go-application-with-signoz/)
-
-[Nodejs Application Performance Monitoring with SigNoz](/blog/nodejs-opensource-application-monitoring/)
+[Kubernetes Monitoring Tools](https://signoz.io/blog/kubernetes-monitoring-tools/)<br></br>
+[New Relic Alternatives](https://signoz.io/blog/new-relic-alternatives/)<br></br>
+[Log Monitoring](https://signoz.io/blog/log-monitoring/)<br></br>

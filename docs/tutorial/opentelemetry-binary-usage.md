@@ -62,9 +62,9 @@ Here are the steps to set up OpenTelemetry binary as an agent.
 
 4. <OtelExecuteLinux />
 
-5. <TailLogs />
+   <TailLogs />
 
-6. <OtelStop />
+   <OtelStop />
 
 </TabItem>
 <TabItem value="linux-arm" label="Linux (arm64)">
@@ -77,9 +77,9 @@ Here are the steps to set up OpenTelemetry binary as an agent.
 
 4. <OtelExecuteLinux />
 
-5. <TailLogs />
+   <TailLogs />
 
-6. <OtelStop />
+   <OtelStop />
 
 </TabItem>
 <TabItem value="macos-amd" label="MacOS (amd64)">
@@ -92,9 +92,9 @@ Here are the steps to set up OpenTelemetry binary as an agent.
 
 4. <OtelExecuteMacos />
 
-5. <TailLogs />
+   <TailLogs />
 
-6. <OtelStop />
+   <OtelStop />
 
 </TabItem>
 <TabItem value="macos-arm" label="MacOS (arm64)">
@@ -107,9 +107,9 @@ Here are the steps to set up OpenTelemetry binary as an agent.
 
 4. <OtelExecuteMacos />
 
-5. <TailLogs />
+   <TailLogs />
 
-6. <OtelStop />
+  <OtelStop />
 
 </TabItem>
 </Tabs>
@@ -429,17 +429,7 @@ from `telemetrygen` in the SigNoz UI.
 
 ## HostMetrics Dashboard
 
-In this section, we import a dashboard with metrics collected by the `hostmetrics` receiver from the VM.
-
-Hostmetrics dashboard is a generic dashboard with a hostname variable,
-which can be used to visualize metrics of any VMs that have the
-`hostmetrics` receiver configured.
-
-To import the dashboard file in SigNoz UI from [here][4].
-
-After importing the dashboard JSON, we should see the following dashboard in SigNoz UI:
-
-![hostmetrics dashboard][3]
+To setup the Hostmetrics Dashboard, check the docs [here](https://signoz.io/docs/userguide/hostmetrics/).
 
 ---
 
@@ -450,6 +440,6 @@ After importing the dashboard JSON, we should see the following dashboard in Sig
 ---
 
 [1]: https://github.com/open-telemetry/opentelemetry-collector-releases/releases
-[2]: /img/docs/telemetrygen-output.png
-[3]: /img/docs/hostmetrics-dashboard.png
+[2]: /img/docs/telemetrygen-output.webp
+[3]: /img/docs/hostmetrics-dashboard.webp
 [4]: https://github.com/SigNoz/dashboards/raw/main/hostmetrics/hostmetrics-with-variable.json

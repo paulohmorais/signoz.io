@@ -101,7 +101,7 @@ From the description above, you might have a good idea about the differences bet
 
 Summarizing the key differences between Jaeger and Elastic APM:
 
-- Jaeger is an open-source distributed tracing tool meant for microservices. Elastic APM is an APM tool that provides metrics and log monitoring along with distributed tracing.
+- Jaeger is an open-source distributed tracing tool meant for microservices. Elastic APM is an APM tool that provides metrics and [log monitoring](https://signoz.io/blog/log-monitoring/) along with distributed tracing.
 
 - Jaeger's instrumentation libraries are based on OpenTracing APIs, which is an open-source standard for providing vendor-neutral instrumentation libraries. OpenTracing based telemetry data is supported by multiple APM vendors. If you decide to use Elastic APM, your telemetry data can only be used by Elastic APM.
 

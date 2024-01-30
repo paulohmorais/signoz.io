@@ -3,7 +3,7 @@ import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 
-const TALK_TO_EXPERT_URL = "https://calendly.com/pranay-signoz/signoz-intro-calls";
+const TALK_TO_EXPERT_URL = "https://calendly.com/pranay-signoz/signoz-talk-to-expert";
 
 export const TalkToExpert = () => {
   return (

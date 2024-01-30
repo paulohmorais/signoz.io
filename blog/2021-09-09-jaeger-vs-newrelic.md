@@ -189,5 +189,4 @@ ___
 #### **Related Content**
 
 **[SigNoz vs New Relic](https://signoz.io/comparisons/signoz-vs-newrelic/)**<br></br>
-**[Jaeger vs Zipkin](https://signoz.io/blog/jaeger-vs-zipkin/)**<br></br>
-**[Jaeger vs DataDog](https://signoz.io/blog/datadog-vs-jaeger/)**<br></br>
+**[New Relic Alternatives](https://signoz.io/blog/new-relic-alternatives/)**<br></br>

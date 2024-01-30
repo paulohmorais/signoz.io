@@ -57,6 +57,7 @@ From VMs, there are two ways to send data to SigNoz Cloud.
     import (
         .....
 
+        "google.golang.org/grpc/credentials"
         "github.com/gin-gonic/gin"
         "go.opentelemetry.io/otel"
         "go.opentelemetry.io/otel/attribute"
@@ -203,6 +204,7 @@ You can find instructions to install OTel Collector binary [here](https://signoz
     import (
         .....
 
+        "google.golang.org/grpc/credentials"
         "github.com/gin-gonic/gin"
         "go.opentelemetry.io/otel"
         "go.opentelemetry.io/otel/attribute"
@@ -337,6 +339,7 @@ Once you have set up OTel Collector agent, you can proceed with OpenTelemetry Go
     import (
         .....
 
+        "google.golang.org/grpc/credentials"
         "github.com/gin-gonic/gin"
         "go.opentelemetry.io/otel"
         "go.opentelemetry.io/otel/attribute"
@@ -469,6 +472,7 @@ Once you have set up OTel Collector agent, you can proceed with OpenTelemetry Go
     import (
         .....
 
+        "google.golang.org/grpc/credentials"
         "github.com/gin-gonic/gin"
         "go.opentelemetry.io/otel"
         "go.opentelemetry.io/otel/attribute"

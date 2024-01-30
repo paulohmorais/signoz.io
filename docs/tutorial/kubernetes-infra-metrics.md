@@ -184,19 +184,26 @@ Check out the [List of metrics from Kubernetes receiver][3].
 
 Here are some examples of metrics dashboard.
 
-1. **Import Dashboard with CPU and Memory Metrics**
+1. **Import Dashboard with PVC Metrics**
 
-   You can import dashboard with CPU and Memory metrics of Kubernetes cluster
-   containers from [here][5].
+   You can import dashboard with PVC metrics of Kubernetes cluster
+   from [here][5].
 
-2. **Import Dashboard with K8s Metrics**
+2. **Import Dashboard with Overall Kubernetes pods Metrics**
 
-   You can import dashboard with Kubernetes metrics of K8s cluster from [here][6].
+   You can import dashboard with the general Kubernetes pods metrics of your K8s cluster from [here][6].
 
-3. **Generate and Import Dashboard with Node Hostmetrics**
+3. **Import Dashboard with Detailed Kubernetes pods Metrics**
 
-   You can import dashboard with Node Hostmetrics of your Kubernetes cluster from
-   [here][7].
+   You can import dashboard with more detailed granular Kubernetes pods metrics of your K8s cluster from [here][7].
+
+4. **Import Dashboard with Overall Kubernetes Node Metrics**
+
+   You can import dashboard with the general Kubernetes node metrics of your K8s cluster from [here][8].
+
+5. **Import Dashboard with Detailed Kubernetes Node Metrics**
+
+   You can import dashboard with more detailed granular Kubernetes node metrics of your K8s cluster from [here][9].
 
 In the Dashboard page of SigNoz UI, you can create your own widgets as per you
 need using metrics from the [list below][3].
@@ -215,6 +222,8 @@ need using metrics from the [list below][3].
 [2]: https://github.com/SigNoz/otel-collector-k8s/blob/main/deployment/all-in-one.yaml#L19
 [3]: #list-of-metrics
 [4]: https://signoz.io/docs/userguide/dashboards/
-[5]: https://github.com/SigNoz/dashboards/raw/main/k8s-infra-metrics/cpu-memory-metrics.json
-[6]: https://github.com/SigNoz/dashboards/raw/main/k8s-infra-metrics/kubernetes-metrics.json
-[7]: https://github.com/SigNoz/dashboards/raw/main/hostmetrics/hostmetrics-k8s.json
+[5]: https://github.com/SigNoz/dashboards/blob/main/k8s-infra-metrics/kubernetes-pvc-metrics.json
+[6]: https://github.com/SigNoz/dashboards/blob/main/k8s-infra-metrics/kubernetes-pod-metrics-overall.json
+[7]: https://github.com/SigNoz/dashboards/blob/main/k8s-infra-metrics/kubernetes-pod-metrics-detailed.json
+[8]: https://github.com/SigNoz/dashboards/blob/main/k8s-infra-metrics/kubernetes-node-metrics-overall.json
+[9]: https://github.com/SigNoz/dashboards/blob/main/k8s-infra-metrics/kubernetes-node-metrics-detailed.json

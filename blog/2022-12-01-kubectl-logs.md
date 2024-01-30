@@ -1,7 +1,7 @@
 ---
 title: Using Kubectl Logs | How to view Kubernetes Pod Logs?
 slug: kubectl-logs
-date: 2022-12-01
+date: 2024-01-15
 tags: [Tech Tutorial]
 authors: [daniel]
 description: Kubectl logs command can be used to get information about the containers and pods on your Kubernetes cluster. Debugging your Kubernetes resources heavily depends on...
@@ -23,6 +23,7 @@ keywords:
 
 import SignUps from '../docs/shared/sign-ups.md'
 import LogsPerf from '../docs/shared/logs-perf-cta.md'
+import GetStartedSigNoz from '../docs/shared/get-started-signoz.md';
 
 Information about the containers and pods on your cluster may be obtained using the `kubectl logs` command. These logs allow you to know the performance of your applications, whether they are failing or healthy, and are particularly useful for debugging and troubleshooting purposes.
 
@@ -32,9 +33,17 @@ Information about the containers and pods on your cluster may be obtained using 
 
 In this article, we will see how to use the kubectl logs command to get information from existing resources in a Kubernetes cluster.
 
-Before we dive in, let's first take a quick look at what Kubectl is and how exactly it works.
+Before we dive in, let's first take a quick look Kubernetes architecture and logging.
 
-<SignUps />
+[![Try SigNoz Cloud CTA](/img/blog/2024/01/kubectl-logs-try-signoz-cloud.webp)](https://signoz.io/teams/)
+
+## Kubernetes Architecture and Logging
+
+Kubernetes, a powerful container orchestration system, is designed to manage complex containerized applications. At the heart of its logging mechanism is the concept that each pod in Kubernetes represents a group of one or more containers. These containers produce logs to help with debugging and monitoring.
+
+Logging in Kubernetes is primarily focused on two types of logs: container logs and system logs. Container logs capture the output of a container's stdout and stderr. Kubernetes enables the aggregation of these logs at the pod level, facilitating easy access and management. System logs, on the other hand, provide insights into the Kubernetes nodes themselves, helping in understanding the activities and health of the Kubernetes system.
+
+Kubernetes does not provide a native storage solution for log data, but it allows for log data to be collected and stored using external logging solutions. This flexibility lets users integrate with various logging backends and platforms, enhancing log management and analysis capabilities.
 
 ## What is kubectl?
 
@@ -63,7 +72,7 @@ The kubectl log command is the command that displays information about the backg
 
 Debugging your Kubernetes resources depends on your logs. With the knowledge provided by this command, you can restart your pod by making the necessary adjustments or repairs.
 
-<LogsPerf />
+**[SigNoz to be 2.5x faster than ELK and consumed 50% less resources.](https://signoz.io/blog/logs-performance-benchmark/)**
 
 ## Using kubectl logs
 
@@ -141,6 +150,62 @@ By adding the **-p** flag, you can obtain logs for a Pod that was previously run
 kubectl logs -p [pod-name]
 ```
 
+## Use Cases of `kubectl logs` command
+
+Here are some practical examples and use cases of `kubectl logs`, particularly useful in troubleshooting common issues:
+
+1. **Debugging Crashing Pods:** If a pod is frequently crashing or restarting, use kubectl logs `pod-name` to check the logs for error messages or stack traces. This can help identify configuration errors, missing dependencies, or runtime exceptions.
+    ```bash
+    kubectl logs my-crashing-pod
+    ```
+
+2. **Monitoring for Specific Errors or Warnings:** In a production environment, you might want to monitor specific errors or warnings. You can use kubectl logs with grep to filter out specific patterns.
+
+    ```bash
+    kubectl logs my-app-pod | grep "ERROR"
+    ```
+
+3. **Tail Logs in Real-Time:** For real-time monitoring, especially useful during a deployment or when troubleshooting live issues, you can tail the logs.
+
+      ```bash
+      kubectl logs -f my-app-pod
+      ```
+
+4. **Fetching Logs from a Specific Container in a Multi-Container Pod:** When dealing with pods that have multiple containers, you can specify the container from which to fetch logs.
+
+      ```bash
+      kubectl logs my-pod -c my-container
+      ```
+
+5. **Aggregate Logs for a Set of Pods:** Using label selectors, you can aggregate logs for a specific set of pods, useful for getting an overview of a service or application.
+
+      ```bash
+      kubectl logs -l app=my-app
+      ```
+
+6. **Historical Logs with Previous Flag:** If a pod was restarted, you can view the logs of its previous instance, which is crucial for understanding why a restart occurred.
+
+      ```bash
+      kubectl logs my-restarted-pod --previous
+      ```
+
+7. **Exporting Logs for Analysis:** For deeper analysis, you might want to export logs to a file or an external analysis tool.
+
+    ```bash
+    kubectl logs my-app-pod > my-app-logs.txt
+    ```
+
+8. **Check logs in specific scenarios:** You can also check logs of pods in scenarios that need further investigating.
+
+      - Logs from Pods That Have Completed or Failed<br></br>
+      For pods that have already completed their lifecycle (like Jobs or CronJobs), you can still fetch logs to understand what happened.
+
+      - Investigating Slow Performance<br></br>
+      Sometimes applications may become slow, and checking logs can reveal long-running requests or performance bottlenecks.
+
+      - Checking for Configuration Issues<br></br>
+      Configuration errors often show up in the application logs, making kubectl logs a first point of investigation.
+
 ## Kubernetes logs in production environment
 
 As discussed, you can get logs of containers using the `kubectl log` command, this is a manual log inspection that happens mostly locally.
@@ -188,24 +253,7 @@ With advanced Log Query Builder, you can filter out logs quickly with a mix and 
 
 ## Getting started with SigNoz
 
-SigNoz can be installed on macOS or Linux computers in just three steps by using a simple install script.
-
-The install script automatically installs Docker Engine on Linux. However, on macOS, you must manually install <a href = "https://docs.docker.com/engine/install/" rel="noopener noreferrer nofollow" target="_blank" >Docker Engine</a> before running the install script.
-
-```bash
-git clone -b main https://github.com/SigNoz/signoz.git
-cd signoz/deploy/
-./install.sh
-```
-
-You can visit our documentation for instructions on how to install SigNoz using Docker Swarm and Helm Charts.
-
-
-[![Deployment Docs](/img/blog/common/deploy_docker_documentation.webp)](https://signoz.io/docs/install/)
-
-If you liked what you read, then check out our GitHub repo 👇
-
-[![SigNoz GitHub repo](/img/blog/common/signoz_github.webp)](https://github.com/SigNoz/signoz)
+<GetStartedSigNoz />
 
 ---
 

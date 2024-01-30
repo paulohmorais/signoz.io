@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry MongoDB | Monitor and visualize your MongoDB database calls
 slug: opentelemetry-mongodb
-date: 2023-06-03
+date: 2023-10-18
 tags: [OpenTelemetry Instrumentation, Database Monitoring, JavaScript]
 authors: [pranshu, ankit_anand]
 description: In this tutorial, we will learn how to use OpenTelemetry to trace MongoDB calls. OpenTelemetry provides client libraries for instrumentation of application code in major programming languages & technologies, including databases like MongoDB...
@@ -116,7 +116,7 @@ services:
 
 **Step 2: Add job metrics scraping job**
 
-Add job metrics scraping job to the `otel-collector-metrics-config.yaml` file. You can find the file <a href = "https://github.com/SigNoz/signoz/blob/main/deploy/docker/clickhouse-setup/otel-collector-metrics-config.yaml" rel="noopener noreferrer nofollow" target="_blank">here</a>.
+Add job metrics scraping job to the `otel-collector-config.yaml` file. You can find the file <a href = "https://github.com/SigNoz/signoz/blob/main/deploy/docker/clickhouse-setup/otel-collector-config.yaml" rel="noopener noreferrer nofollow" target="_blank">here</a>.
 
 ```bash
 receivers:
@@ -227,7 +227,7 @@ After collecting telemetry data with OpenTelemetry, you can use a backend analys
 
 If you have any questions or need any help in setting things up, join our slack community and ping us in `#support` channel.
 
-[![SigNoz Slack community](/img/blog/common/join_slack_cta.png)](https://signoz.io/slack)
+[![SigNoz Slack community](/img/blog/common/join_slack_cta.webp)](https://signoz.io/slack)
 
 ---
 

@@ -16,7 +16,7 @@ keywords:
 import { LiteYoutubeEmbed } from "react-lite-yt-embed";
 
 <head>
-<link rel="canonical" href="https://signoz.io/blog/scc-otel-collector-processor/"/>
+<link rel="canonical" href="https://signoz.io/blog/using-opentelemetry-collector-processor/"/>
 </head>
 
 Tune in to learn more about OpenTelemetry Collector processors and how you can use them effectively in SigNoz with <a href="https://twitter.com/pranay01" rel="nofollow">Pranay</a>, one of the the co-founders at <b>SigNoz</b> , and <a href="https://github.com/serverless-mom" rel="nofollow">Nočnica Mellifera</a>
@@ -280,5 +280,5 @@ Thank you for taking out the time to read this transcript :) If you have any fee
 
 Feel free to join our Slack community and say hi! 👋
 
-[![SigNoz Slack community](/img/blog/common/join_slack_cta.png)](https://signoz.io/slack)
+[![SigNoz Slack community](/img/blog/common/join_slack_cta.webp)](https://signoz.io/slack)
 

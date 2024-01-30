@@ -1,7 +1,7 @@
 ---
 title: SigNoz - Open-source alternative to Dynatrace
 slug: dynatrace-alternative
-date: 2023-06-25
+date: 2023-10-15
 tags: [SigNoz, Open Source]
 authors: ankit_anand
 description: If you're looking for an open-source alternative to Dynatrace, then you're at the right place. SigNoz is a perfect open-source alternative to Dynatrace. SigNoz provides a unified UI for metrics, traces and logs with advanced tagging and filtering capabilities...
@@ -17,6 +17,8 @@ keywords:
 <head>
   <link rel="canonical" href="https://signoz.io/blog/dynatrace-alternative/"/>
 </head>
+
+import GetStartedSigNoz from '../docs/shared/get-started-signoz.md';
 
 If you're looking for an open-source alternative to Dynatrace, then you're at the right place. SigNoz is a perfect open-source alternative to Dynatrace. SigNoz provides a unified UI for metrics, traces and logs with advanced tagging and filtering capabilities.
 
@@ -76,13 +78,14 @@ And that's where SigNoz shines. It is very simple to get started, supports multi
 
 Some of our key features which makes SigNoz vastly superior to current open-source products and a great alternative to Dynatrace are:
 
-- Out-of-the-box charts for application metrics like p90, p99, latency, error rates, request rates, etc.
-- Distributed tracing to get end-to-end visibility of your services
-- Monitor any metrics important to you, build dashboards for specific use-cases
-- Logs Management equipped with a powerful search and filter query builder
-- Exceptions monitoring to track exceptions in your application
+- Visualise Traces, Metrics, and Logs in a single pane of glass
+- Monitor application metrics like p99 latency, error rates for your services, external API calls, and individual endpoints.
+- Find the root cause of the problem by going to the exact traces which are causing the problem and see detailed flamegraphs of individual request traces.
+- Run aggregates on trace data to get business-relevant metrics
+- Filter and query logs, build dashboards and alerts based on attributes in logs
+- Monitor infrastructure metrics such as CPU utilization or memory usage
+- Record exceptions automatically in Python, Java, Ruby, and Javascript
 - Easy to set alerts with DIY query builder
-- Native support for OpenTelemetry
 
 ### Out of box application metrics
 
@@ -175,37 +178,16 @@ Some of the key advantages of using OpenTelemetry are:
 - Backed by technology giants like Google, Microsoft, and other big cloud vendors.
 - No vendor lock-in. Freedom to switch to new backend analysis tools by using relevant exporters
 
-
 ## Getting started with SigNoz
 
-You can get started with SigNoz using just three commands at your terminal.
-
-```jsx
-git clone -b main https://github.com/SigNoz/signoz.git
-cd signoz/deploy/
-./install.sh
-```
-<br></br>
-
-For detailed instructions, you can visit our documentation.
-
-[![Deployment Docs](/img/blog/common/deploy_docker_documentation.webp)](https://signoz.io/docs/install/)
-
-If you liked what you read, then check out our GitHub repo 👇
-
-[![SigNoz GitHub repo](/img/blog/common/signoz_github.webp)](https://github.com/SigNoz/signoz)
-
-Our slack community is a great place to get your queries solved instantly and get community support for SigNoz. Link to join 👇
-
-[SigNoz slack community](https://signoz.io/slack)
+<GetStartedSigNoz />
 
 ---
 
 #### **Related Content**
 
 **[SigNoz vs Dynatrace](https://signoz.io/comparisons/signoz-vs-dynatrace/)**<br></br>
-**[DataDog Alternative](https://signoz.io/blog/open-source-datadog-alternative/)**<br></br>
-**[New Relic Alternative](https://signoz.io/blog/open-source-newrelic-alternative/)**<br></br>
+**[Is a $1 million observability bill worth it?](https://signoz.io/blog/justifying-a-million-dollar-observability-bill/)**<br></br>
 
 
 

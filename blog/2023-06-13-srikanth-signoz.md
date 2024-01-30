@@ -17,7 +17,7 @@ keywords:
 </head>
 
 
-Community events are a great way to meet people and learn what they are upto. I was at [KCD Bangalore](https://community.cncf.io/kcd-bengaluru/) last week and met a bunch of people. Among many conversations, one stood out. An engineer and architect turned entrepreneur was interested in hearing feedback about the new product he has been working on.
+Community events are a great way to meet people and learn what they are upto. I was at KCD Bangalore last week and met a bunch of people. Among many conversations, one stood out. An engineer and architect turned entrepreneur was interested in hearing feedback about the new product he has been working on.
 <!--truncate-->
 
 ![Cover Image](/img/blog/2023/06/srikanth-blog.webp)

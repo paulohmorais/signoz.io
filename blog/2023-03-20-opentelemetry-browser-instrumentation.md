@@ -91,7 +91,7 @@ Our application code consists of a `tracing.js` file. The `tracing.js` file cont
 To instrument the React app with OpenTelemetry, we need to install the OpenTelemetry dependencies.
 
 ```jsx
-npm i @opentelemetry/api @opentelemetry/auto-instrumentations-web, @opentelemetry/context-zone, @opentelemetry/exporter-trace-otlp-http @opentelemetry/instrumentation-fetch @opentelemetry/instrumentation-xml-http-request @opentelemetry/resources @opentelemetry/sdk-trace-web
+npm i @opentelemetry/api @opentelemetry/auto-instrumentations-web @opentelemetry/context-zone @opentelemetry/exporter-trace-otlp-http @opentelemetry/instrumentation-fetch @opentelemetry/instrumentation-xml-http-request @opentelemetry/resources @opentelemetry/sdk-trace-web
 ```
 
 Since we already set up the tracing.js file in the sample react app, you can just change the service name.
@@ -141,14 +141,14 @@ Once you make the changes, you need to restart the Docker containers.
 **To stop running the SigNoz cluster:**
 
 ```
-sudo docker-compose -f docker/clickhouse-setup/docker-compose.yaml stop
+sudo docker compose -f docker/clickhouse-setup/docker-compose.yaml stop
 
 ```
 
 **To start/resume the running SigNoz cluster:**
 
 ```
-sudo docker-compose -f docker/clickhouse-setup/docker-compose.yaml up
+sudo docker compose -f docker/clickhouse-setup/docker-compose.yaml up
 
 ```
 
@@ -231,7 +231,7 @@ OpenTelemetry combined with SigNoz provides a full-stack open source solution. S
 
 If you have any questions or need any help in setting things up with SigNoz, join our slack community and ping us in `#support` channel.
 
-[![SigNoz Slack community](/img/blog/common/join_slack_cta.png)](https://signoz.io/slack)
+[![SigNoz Slack community](/img/blog/common/join_slack_cta.webp)](https://signoz.io/slack)
 
 ---
 

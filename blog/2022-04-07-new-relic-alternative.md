@@ -1,7 +1,7 @@
 ---
 title: SigNoz - Open-source alternative to New Relic
 slug: open-source-newrelic-alternative
-date: 2023-08-30
+date: 2023-12-20
 tags: [SigNoz, Open Source]
 authors: ankit_anand
 description: If you're looking for an open-source alternative to New Relic, then you're at the right place. SigNoz is a perfect open-source alternative to New Relic. SigNoz provides a unified UI for metrics, traces and logs with advanced tagging and filtering capabilities...
@@ -89,13 +89,14 @@ And that's where SigNoz shines. It is very simple to get started, supports multi
 
 Some of our key features which makes SigNoz vastly superior to current open-source products and a great alternative to New Relic are:
 
-- Out-of-the-box charts for application metrics like p90, p99, latency, error rates, request rates, etc.
-- Distributed tracing to get end-to-end visibility of your services
-- Monitor any metrics important to you, build dashboards for specific use-cases
-- Logs Management equipped with a powerful search and filter query builder
-- Exceptions monitoring to track exceptions in your application
+- Visualise Traces, Metrics, and Logs in a single pane of glass
+- Monitor application metrics like p99 latency, error rates for your services, external API calls, and individual endpoints.
+- Find the root cause of the problem by going to the exact traces which are causing the problem and see detailed flamegraphs of individual request traces.
+- Run aggregates on trace data to get business-relevant metrics
+- Filter and query logs, build dashboards and alerts based on attributes in logs
+- Monitor infrastructure metrics such as CPU utilization or memory usage
+- Record exceptions automatically in Python, Java, Ruby, and Javascript
 - Easy to set alerts with DIY query builder
-- Native support for OpenTelemetry native
 
 
 ### Application metrics
@@ -205,7 +206,7 @@ Some of the key advantages of using OpenTelemetry are:
 
 #### **Related Content**
 
-**[SigNoz vs New Relic](https://signoz.io/comparisons/signoz-vs-newrelic/)**<br></br>
-**[Dynatrace Alternative](https://signoz.io/blog/dynatrace-alternative/)**<br></br>
-**[AppDynamics Alternative](https://signoz.io/blog/appdynamics-alternative/)**<br></br>
+**[Top 11 New Relic Alternatives](https://signoz.io/blog/new-relic-alternatives/)**
+
+**[SigNoz vs New Relic](https://signoz.io/comparisons/signoz-vs-newrelic/)**
 

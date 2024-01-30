@@ -21,7 +21,7 @@ const CTA = () => {
         <div className="mx-auto max-w-xl">
           <div className="">
             <Heading type={2}>
-              OpenTelemetry-Native Metrics, Logs,
+              OpenTelemetry-Native Metrics, Logs,&nbsp;
               <br className="hidden lg:inline" />
               and Traces in a single pane of glass
             </Heading>

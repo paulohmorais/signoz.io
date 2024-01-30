@@ -16,11 +16,11 @@ For each span, SigNoz shows the following details:
 - Start time
 - Duration
 - The list of tags associated with the currently selected span.
-- The list of events associated with the currently selected span. If your application emits events to complement traces, SigNoz will display them on this page. For details about raising events in your code, see the [Events](https://opentelemetry.io/docs/concepts/instrumenting-library/#events) section of the OpenTelemetry website and the [Semantic Code for Exceptions](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/exceptions.md) page of the `open-telemetry/opentelemetry-specification` specification repo.
+- The list of events associated with the currently selected span. If your application emits events to complement traces, SigNoz will display them on this page. For details about raising events in your code, see the [Events](https://opentelemetry.io/docs/concepts/instrumenting-library/#events) section of the OpenTelemetry website
 
 The following illustration shows the **Span Details** page:
 
-![Screenshot showing the span details page](/img/span-details-page-v0.7.1.png)
+![Screenshot showing the span details page](/img/span-details-page-v0.7.1.webp)
 
 **Legend**:
 
@@ -53,4 +53,4 @@ Select the **Focus on selected span** button to view only the currently selected
 
 On the **Span Details** page SigNoz highlights in red all spans with errors. In the following example screenshot, you can see two spans with errors:
 
-![Screenshot showing a span with errors](/img/identify-span-with-errors-v0.7.1.png)
+![Screenshot showing a span with errors](/img/identify-span-with-errors-v0.7.1.webp)

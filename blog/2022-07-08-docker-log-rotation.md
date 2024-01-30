@@ -1,7 +1,7 @@
 ---
 title: Docker Log Rotation Configuration Guide | SigNoz
 slug: docker-log-rotation
-date: 2022-11-10
+date: 2024-01-15
 tags: [Tech Tutorial, Docker]
 authors: [daniel]
 description: Docker uses the JSON-file logging driver by default, and it records all stdout and stderr output in JSON format. The logs are often stored on the Docker host, and Docker does not impose a size restriction on log files. And that’s where Docker log rotation is required...
@@ -19,6 +19,7 @@ keywords:
 
 import SignUps from '../docs/shared/sign-ups.md'
 import LogsPerf from '../docs/shared/logs-perf-cta.md'
+import GetStartedSigNoz from '../docs/shared/get-started-signoz.md';
 
 It is essential to configure log rotation for Docker containers. Log rotation is not performed by default, and if it’s not configured, logs on the Docker host can build up and eat up disk space. This guide will teach us how to set up Docker log rotation.
 
@@ -30,8 +31,6 @@ Logs are an essential piece of telemetry data. Logs can be used to debug perform
 
 With containerization, it is easier to scale applications. But the operation complexity has increased manifolds. Containers are ephemeral. Frequently changing container-based environments are challenging to monitor. Docker logs can help debug performance issues.
 Applications in Docker containers emit logs through `stdout` and `stderr` output streams. The logging driver that you choose can access these streams. Based on your logging driver, you can configure the format and storage of Docker logs. You can also send the emitted logs to a central log management system.
-
-<SignUps />
 
 Before deep-diving into configuring Docker log rotation, let's briefly overview Docker logs.
 
@@ -68,6 +67,18 @@ To know your current logging driver for Docker Daemon, run the following command
 ```bash
 $ docker info --format '{{.LoggingDriver}}'
 ```
+
+## Why is Docker Log Rotation needed?
+
+Docker log rotation is critical for several reasons:
+
+1. **Resource Management:** Without log rotation, logs can consume significant disk space, especially in high-traffic environments, leading to system slowdown or failure.
+
+2. **Performance Optimization:** Regularly rotating logs helps maintain optimal performance of Docker containers and the host system.
+
+3. **Security and Compliance:** For security-sensitive applications, rotating logs can help manage sensitive data and comply with data retention policies.
+
+4. **Simplified Troubleshooting:** It makes it easier to analyze recent logs without wading through old, irrelevant data.
 
 ## Configuring Docker Log Rotation
 
@@ -106,9 +117,9 @@ The final file, when using `json-file` driver looks like this:
 {
   "log-driver": "json-file",
   "log-opts": {
-    "max-size": "15m",
-    "max-file": "5",
-    }
+    "max-size": "10m",
+    "max-file": "5"
+  }
 }
 ```
 
@@ -118,7 +129,7 @@ You can also update the parameters for `local` logging driver using the same for
 {
   "log-driver": "local",
   "log-opts": {
-    "max-size": "15m"
+    "max-size": "10m",
     "max-file": "5"
   }
 }
@@ -198,23 +209,7 @@ SigNoz is built to support <a href = "https://opentelemetry.io/" rel="noopener n
 
 ## Getting started with SigNoz
 
-It’s easy to get started with SigNoz. It can be installed on macOS or Linux computers in just three steps by using a simple installation script.
-
-The install script automatically installs Docker Engine on Linux. However, you must manually install <a href = "https://docs.docker.com/engine/install/" rel="noopener noreferrer nofollow" target="_blank">Docker Engine</a> on macOS before running the install script.
-
-```jsx
-git clone -b main https://github.com/SigNoz/signoz.git
-cd signoz/deploy/
-./install.sh
-```
-
-You can visit our documentation for instructions on how to install SigNoz using Docker Swarm and Helm Charts.
-
-[![Deployment Docs](/img/blog/common/deploy_docker_documentation.webp)](https://signoz.io/docs/install/)
-
-You can check out SigNoz GitHub repo here:
-
-[![SigNoz GitHub repo](/img/blog/common/signoz_github.webp)](https://github.com/SigNoz/signoz)
+<GetStartedSigNoz />
 
 ---
 ## Further Reading

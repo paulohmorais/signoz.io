@@ -319,14 +319,14 @@ After adding the changes, you need to restart the SigNoz Docker containers.
 
 **To stop the running SigNoz cluster:**
 ```
-sudo docker-compose -f docker/clickhouse-setup/docker-compose.yaml stop
+sudo docker compose -f docker/clickhouse-setup/docker-compose.yaml stop
 ```
 
 
 **To start/resume the running SigNoz cluster:**
 
 ```
-sudo docker-compose -f docker/clickhouse-setup/docker-compose.yaml start
+sudo docker compose -f docker/clickhouse-setup/docker-compose.yaml start
 ```
 
 
@@ -491,7 +491,7 @@ OpenTelemetry makes it very convenient to instrument a full-stack application. M
 
 If you try out SigNoz to instrument your nodejs application and face any issues, feel free to ping us in the #support channel.
 
-[![SigNoz Slack community](/img/blog/common/join_slack_cta.png)](https://signoz.io/slack)
+[![SigNoz Slack community](/img/blog/common/join_slack_cta.webp)](https://signoz.io/slack)
 
 ---
 

@@ -232,10 +232,10 @@ docker run -d --name fastapi-container \
 ```
 <br></br>
 
-If you're using docker-compose setup:
+If you're using docker compose setup:
 
 ```bash
-# If you are running signoz through official docker-compose setup, run `docker network ls` and find clickhouse network id. It will be something like this clickhouse-setup_default 
+# If you are running signoz through official docker compose setup, run `docker network ls` and find clickhouse network id. It will be something like this clickhouse-setup_default 
 # and pass network id by using --net <network ID>
 
 docker run -d --name fastapi-container \ 
@@ -323,7 +323,7 @@ If you are someone who understands more from video, then you can watch the below
 
 If you have any questions or need any help in setting things up, join our slack community and ping us in `#support` channel.
 
-[![SigNoz Slack community](/img/blog/common/join_slack_cta.png)](https://signoz.io/slack)
+[![SigNoz Slack community](/img/blog/common/join_slack_cta.webp)](https://signoz.io/slack)
 
 ---
 Read more about OpenTelemetry 👇

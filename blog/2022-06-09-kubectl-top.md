@@ -1,7 +1,7 @@
 ---
 title: Kubectl Top Pod/Node | How to get & read resource utilization metrics of K8s?
 slug: kubectl-top
-date: 2023-03-08
+date: 2024-01-20
 tags: [Tech Tutorial]
 authors: [daniel, ankit_anand]
 description: Kubectl Top command can be used to retrieve snapshots of resource utilization of pods/nodes in your Kubernetes cluster. You can even retrieve metrics information about specific pods or nodes by specifying a namespace...
@@ -35,7 +35,7 @@ In this article, we will see how to use `kubectl Top` command to get and read me
 
 But before we get down to learn about Kubectl Top command, let’s have a brief overview of a few concepts in Kubernetes.
 
-<SignUps />
+[![Try SigNoz Cloud CTA](/img/blog/2024/01/kubectl-logs-try-signoz-cloud.webp)](https://signoz.io/teams/)
 
 ## What is kubectl?
 
@@ -144,6 +144,26 @@ my-release-signoz-otel-collector-metrics-5dcb767c77-5bgpt   5m           38Mi
 my-release-signoz-query-service-0                           3m           57Mi            
 my-release-zookeeper-0                                      4m           91Mi
 ```
+
+## Use Cases of `kubectl top pod/node` command
+
+Here are some use cases where `kubectl top pod` or `kubectl top node` command can be useful:
+
+Use cases of `kubectl top node` command:
+
+1. **Node Health Monitoring:** Monitoring the resource usage of nodes to ensure they are not overburdened, which is crucial for maintaining cluster health.
+
+2. **Load Balancing:** Identifying under-utilized or over-utilized nodes, which can inform decisions on workload distribution and node scaling.
+
+3. **Preventive Maintenance:** Detecting nodes with consistently high resource usage, potentially indicating the need for maintenance or upgrade.
+
+Use cases of `kubectl top pod` command:
+
+1. **Resource Optimization:** Identifying pods consuming excessive CPU or memory resources, enabling optimization of pod resource allocation.
+
+2. **Troubleshooting:** Helping diagnose issues in applications by monitoring pod resource usage, especially when pods are not performing as expected.
+
+3. **Capacity Planning:** Assisting in understanding current pod resource usage, facilitating better decisions for scaling and infrastructure planning.
 
 ## Conclusion
 

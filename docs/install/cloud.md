@@ -21,10 +21,11 @@ You can also visualize user requests in their entirety as it travels across comp
 - [Python](https://signoz.io/docs/instrumentation/python/#send-traces-to-signoz-cloud)
 - [Nodejs](https://signoz.io/docs/instrumentation/javascript/)
 - [Golang](https://signoz.io/docs/instrumentation/golang/#send-traces-to-signoz-cloud)
+- [Ruby on Rails](https://signoz.io/docs/instrumentation/ruby-on-rails/)
 
 ## Collect Hostmetrics from VM
 
-Find [instructions](https://signoz.io/docs/tutorial/opentelemetry-binary-usage-in-virtual-machine/) to send hostmetrics to SigNoz Cloud using OpenTelemetry Collector.
+Find [instructions](https://signoz.io/docs/userguide/hostmetrics/) to send hostmetrics to SigNoz Cloud using OpenTelemetry Collector.
 
 ## Collect Kubernetes Infra Metrics
 

@@ -1,20 +1,17 @@
 ---
-title: Comparing The Top 9 Datadog Alternatives in 2023
+title: Comparing The Top 9 Datadog Alternatives in 2024
 slug: datadog-alternatives
-date: 2023-09-20
+date: 2024-01-27
 tags: [Tech Resources]
 authors: ankit_anand
-description: Are you looking for a DataDog alternative? Then you've come to the right place. In this article, we will explore the top 9 alternatives to DataDog. 1.SigNoz 2.New Relic 3.Dynatrace...
-image: /img/blog/2023/09/datadog-alternatives-cover-min.jpg
+description: Are you looking for DataDog alternatives? Then you've come to the right place. In this article, we will explore the top 9 alternatives to DataDog. 1.SigNoz 2.New Relic 3.Dynatrace...
+image: /img/blog/2024/01/datadog-alternatives-cover.webp
 keywords:
-  - opentelemetry
-  - opentelemetry golang
-  - opentelemetry go
-  - distributed tracing
-  - observability
-  - golang application monitoring
-  - golang instrumentation
-  - signoz
+  - datadog alternatives
+  - datadog
+  - datadog competitors
+  - apm tools
+  - datadog alternative
 ---
 
 <head>
@@ -29,7 +26,7 @@ Are you looking for a DataDog alternative? Then you have come to the right place
 
 import Screenshot from "@theme/Screenshot"
 
-![Cover Image](/img/blog/2023/09/datadog-alternatives-cover.webp)
+![Cover Image](/img/blog/2024/01/datadog-alternatives-cover.webp)
 
 DataDog is a cloud monitoring software that provides an array of tools for monitoring different aspects of your application and infrastructure. For bigger enterprises it might make sense to shell out huge monitoring bills, but it's often out of question for small and medium size enterprises.
 
@@ -55,7 +52,7 @@ Datadog's billing has two key issues:
 
 The monitoring space is highly competitive, but there are a few products that stand out. In this article we will go through the best DatDog alternatives which you can explore while selecting your vendor for application monitoring.
 
-List of top DataDog alternatives in 2023:
+List of top DataDog alternatives in 2024:
 
 - [SigNoz (Open-Source)](#signoz-open-source)
 - [New Relic](#new-relic)
@@ -135,7 +132,7 @@ Standard offering includes plans for teams upto 5 full users. Their pricing depe
 You can visit their <a href = "https://newrelic.com/pricing" rel="noopener noreferrer nofollow" target="_blank" >pricing page</a> for details.
 
 <figure data-zoomable align='center'>
-    <img src="/img/blog/2021/08/Datadog_alt_New_relic_dashboard-min.webp" alt="New Relic dashboard"/>
+    <img className="box-shadowed-image" src="/img/blog/2024/01/new-relic-apm.webp" alt="New Relic dashboard"/>
     <figcaption><i>New Relic dashboard</i></figcaption>
 </figure>
 
@@ -155,35 +152,30 @@ You can visit their <a href = "https://newrelic.com/pricing" rel="noopener noref
 Full-stack monitoring, the Dynatrace product aimed to provide observability for apps, is priced at $69 per month for 8 GB per host if billed annually.
 
 <figure data-zoomable align='center'>
-    <img src="/img/blog/2021/08/datadog_alternative_dynatrace_dashboard.webp" alt="Dynatrace dashboard (Source: Dynatrace website)"/>
+    <img className="box-shadowed-image" src="/img/blog/2024/01/datadog-alternatives-dynatrace.webp" alt="Datadog alternatives - Dynatrace dashboard (Source: Dynatrace website)"/>
     <figcaption><i>Dynatrace dashboard (Source: Dynatrace website)</i></figcaption>
 </figure>
 
 <br></br>
 
-## Prometheus
+## Grafana
 
-<a href = "https://prometheus.io/" rel="noopener noreferrer nofollow" target="_blank" >Prometheus</a> can serve as a DataDog alternative if you are looking to track only metrics for your applications. It was initially developed at SoundCloud in 2012 before being released as an open-source project. It was the second project to graduate from CNCF after Kubernetes. If you want to opt for an open-source tool for metrics monitoring, then Prometheus can be a good option.
+Grafana is an open-source data visualization tool that you can use as a Datadog alternative. It offers a cloud service called Grafana Cloud, where you can send your logs, metrics, and traces for APM and overall observability.
 
-It enables you to capture time-series data as metrics. It's a pull-based monitoring system where the Prometheus server pulls metrics from exporters known as Prometheus targets. Other components in the Prometheus architecture include:
+If you’re looking to use Grafana as a Datadog alternative, then you’ll use the core LGTM stack. It is particularly popular in cloud-native environments, offering a comprehensive solution for observability that covers logs, metrics, traces, and visualization.
 
-- A query language known as PromQL is used to query collected time-series data
-- In-built alert manager which is used for managing notifications and silencing
-- Visualization layer, which includes a built-in expression browser
+1. **Loki**: An efficient log aggregation system that indexes log metadata, enabling cost-effective storage and fast querying, integrated seamlessly with Grafana.
+2. **Grafana**: A versatile visualization tool offering customizable dashboards to display and analyze data from various sources, including metrics, logs, and traces.
+3. **Tempo**: A distributed tracing backend focused on scalability, storing and querying trace data, with easy integration into Grafana for visualization.
+4. **Mimir**: A long-term, scalable storage system for Prometheus metrics, ensuring high performance and availability for large-scale metric data.
 
-The visualization layer of Prometheus is basic, and it is often used alongside Grafana, an open-source analytics, and visualization tool.
-
-<figure data-zoomable align='center'>
-    <img src="/img/blog/2021/08/datadog_alternative_prom_exp_browser-min.webp" alt="Prometheus expression browser"/>
-    <figcaption><i>Prometheus expression browser</i></figcaption>
-</figure>
-
-<br></br>
+The disadvantage of using the LGTM stack is managing multiple backends, which can be cumbersome.
 
 <figure data-zoomable align='center'>
-    <img src="/img/blog/2021/08/dd_alt_prometheus_grafana-min.webp" alt="Grafana used as a visualization layer for Prometheus"/>
-    <figcaption><i>Grafana used as a visualization layer for Prometheus</i></figcaption>
+    <img className="box-shadowed-image" src="/img/blog/2023/12/new-relic-alternatives-grafana.webp" alt="Datadog Alternative - Grafana"/>
+    <figcaption><i>Grafana dashboard (Source: Grafana website)</i></figcaption>
 </figure>
+<br/>
 
 <br></br>
 
@@ -201,7 +193,7 @@ With dynamic topology mapping, you can have an overview of your network devices 
 - Database Monitoring
 
 <figure data-zoomable align='center'>
-    <img src="/img/blog/2021/08/dd_alt_logicmonitor-min.webp" alt="LogicMonitor Dashboard (Source: LogicMonitor website)"/>
+    <img className="box-shadowed-image" src="/img/blog/2024/01/logicmonitor.webp" alt="LogicMonitor Dashboard (Source: LogicMonitor website)"/>
     <figcaption><i>LogicMonitor Dashboard (Source: LogicMonitor website)</i></figcaption>
 </figure>
 
@@ -219,9 +211,11 @@ Some of the key features of the AppDynamics APM tool includes:
 - An alert system to alert you to issues in the context of business transactions
 - Pricing starts at $60/month per CPU core
 
+
+
 <figure data-zoomable align='center'>
-    <img src="/img/blog/2021/09/apm_tools_appdynamics-min.webp" alt="A Sample AppDynamics targeted primarily for Development teams"/>
-    <figcaption><i>A Sample AppDynamics targeted primarily for Development teams (Source: AppDynamics documentation)</i></figcaption>
+    <img className="box-shadowed-image" src="/img/blog/2023/09/appdynamics_splunk_alternative.webp" alt="Datadog Alternative - AppDynamics"/>
+    <figcaption><i>Appdynamics observability platform for full visibility of application performance</i></figcaption>
 </figure>
 
 <br></br>
@@ -298,7 +292,7 @@ If you're looking for a Datadog alternative, you might be frustrated with its bi
 
 Monitoring and observability are critical components that you can't ignore for your applications in the production environment. As such, choosing the right tool which can empower you to take actions proactively is very important. Though DataDog is a good tool, it has its own challenges, including cost, unclear pricing policies, and complex UI.
 
-The above DataDog alternatives can be a good option to meet your monitoring needs. If you're moving out of Datadog, a good option can be to move out of closed SaaS vendors and shift towards open source solution. Many application owners are now shifting to OpenTelemetry for their observability data. OpenTelemetry is an open-source collection of APIs, SDKs, and tools. It can be used to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) to help you analyze your software’s performance and behavior.
+The above DataDog alternatives can be a good option to meet your monitoring needs. If you're moving out of Datadog, a good option can be to move out of closed SaaS vendors and shift towards open source solution. Many application owners are now shifting to OpenTelemetry for their observability data. While tools like Datadog and New Relic claim that they support OpenTelemetry, [their support is not first-class](https://signoz.io/blog/is-opentelemetry-a-first-class-citizen-in-your-dashboard-a-datadog-and-newrelic-comparison/). OpenTelemetry is an open-source collection of APIs, SDKs, and tools. It can be used to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) to help you analyze your software’s performance and behavior.
 
 Using OpenTelemetry to generate telemetry data fress you from vendor lock-in as it gives you an option to export the data to a backend of your choice. For an OpenTelemetry backend, SigNoz can be a great choice. It is built to support OpenTelemetry data natively.
 
@@ -311,4 +305,4 @@ Read more about SigNoz:<br></br>
 
 **[SigNoz vs Datadog](https://signoz.io/comparisons/signoz-vs-datadog/)**<br></br>
 
-**[Monitor your Spring Boot application with OpenTelemetry and SigNoz](https://signoz.io/blog/opentelemetry-spring-boot/)**<br></br>
+**[New Relic Alternatives](https://signoz.io/blog/new-relic-alternatives/)**<br></br>

@@ -170,7 +170,7 @@ with the IP address of the host running SigNoz.
 To start the services, run the following command:
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 We will visit the `hello-app` service to generate some traffic.
@@ -181,7 +181,7 @@ curl -H Host:hello-app.docker.localhost http://127.0.0.1
 
 Now, we will visit the SigNoz UI to see the traces and metrics.
 
-![Traefik Traces](/img/docs/tutorial/traefik-traces.png)
+![Traefik Traces](/img/docs/tutorial/traefik-traces.webp)
 
 To plot metrics generated from **Traefik**, follow the instructions
 given in the docs [here][2].

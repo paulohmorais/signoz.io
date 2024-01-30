@@ -1,11 +1,11 @@
 ---
-title: DataDog vs Prometheus - Key features & differences
+title: DataDog vs Prometheus - Comprehensive Comparison Guide [Updated for 2024]
 slug: datadog-vs-prometheus
 date: 2023-09-05
 tags: [Tools Comparison, Prometheus]
 authors: ankit_anand
-description: In this article, we will compare DataDog with Prometheus. Both are monitoring tools but differ significantly in their offerings. DataDog is a paid SaaS monitoring tool, while Prometheus is an open-source metrics...
-image: /img/blog/2023/03/datadog_vs_prometheus_cover.webp
+description: Datadog is a cloud-based SaaS solution, meaning there's no need to install or maintain any infrastructure. While on the other hand being open-source, Prometheus requires manual download and installation on your infrastructure...
+image: /img/blog/2023/10/datadog-vs-prometheus-cover-min.jpg
 keywords:
   - datadog
   - prometheus
@@ -17,62 +17,65 @@ keywords:
   <link rel="canonical" href="https://signoz.io/blog/datadog-vs-prometheus/"/>
 </head>
 
-Both DataDog and Prometheus are application monitoring tools aimed to improve application performance. While DataDog is a proprietary SaaS vendor in the APM domain, Prometheus is an open-source metrics monitoring tool that was the second project to graduate from Cloud Native Computing Foundation in 2018. Let us compare DataDog and Prometheus in this article.
+Both DataDog and Prometheus are application monitoring tools aimed to improve application performance. While Datadog is a cloud-based SaaS solution, meaning there's no need to install or maintain any infrastructure, Prometheus is an open-source tool that requires manual download and installation on your infrastructure. Let us compare DataDog and Prometheus to see which tool suits 
 
 <!--truncate-->
 
-![Cover Image](/img/blog/2023/03/datadog_vs_prometheus_cover-min.jpg)
+![Cover Image](/img/blog/2023/10/datadog-vs-prometheus-cover.webp)
 
 The biggest difference between Datadog and Prometheus is that while Prometheus is open-source, Datadog is proprietary. To use Prometheus, you will have to install it in your own infrastructure. Datadog provides a SaaS service to which you can send your monitoring data to.
 
 In this article, we will explore the differences between DataDog and Prometheus based on these categories:
 
 - Getting started
-- Monitoring use-cases
-- User-experience and visualizations
+- Features
 - Pricing
 
 We will also explore the key features of DataDog and Prometheus.
 
 > While DataDog and Prometheus are great monitoring tools, they have their limitations. DataDog is an enterprise SaaS tool with complex pricing tiers. Prometheus is an open-source metrics monitoring tool with limited UI and requires effort to set up and scale.<br></br>
-> You can check out [SigNoz](https://signoz.io/) - an open-source APM tool that comes with great user experience in terms of getting started and web user experience.
+> You can check out [SigNoz](https://signoz.io/) - an open-source APM tool that provides metrics, traces, and logs under a single pane of glass.
 
 ## Comparing DataDog and Prometheus
 
 The major difference between DataDog and Prometheus lies in the scope of monitoring that each tool covers. DataDog is an enterprise SaaS tool that offers products that cover the entire domain of monitoring.
 
-On the other hand, Prometheus is an open-source metrics monitoring tool used to track metrics like resource usage.
+On the other hand, Prometheus is an open-source metrics monitoring tool used to monitor metrics or time-series data.
 
 Some of the key differences between DataDog and Prometheus:
 
-- **Getting started**<br></br>
+### Getting Started - Datadog is easier
+
+Datadog:
+
+**Deployment:** Datadog is a cloud-based SaaS solution, meaning there's no need to install or maintain any infrastructure. Simply sign up, install the Datadog Agent on your infrastructure, and begin sending metrics and logs to the platform.
+
+**Data Collection:** Datadog can collect data from a myriad of sources using integrations. These pre-built connectors allow data collection from specific technologies or platforms. Custom integrations are also supported.
+
+Prometheus:
+
+**Deployment:** Being open-source, Prometheus requires manual download and installation on your infrastructure. It comprises various components, including the Prometheus server, exporters, and client libraries.
+
+**Data Collection:** Prometheus uses exporters to collect data. An exporter exposes metrics in a format that Prometheus can scrape. Numerous exporters are available for different technologies.
+
+<!-- - **Getting started**<br></br>
   DataDog is relatively simpler to get started than Prometheus. You need to sign up for a DataDog account and then install DataDog agents on your host. The DataDog agent can be installed on many platforms either directly or as a containerized version. The agent reports events and metrics from the host.
 
-  Prometheus installation requires a bit of configuration to get started. You would want to set up long-term external retention if you don't want a single machine as a point of failure and to analyze data from multiple Prometheus instances giving a global view. It is easier to get started with Prometheus for monitoring other CNCF projects like Kubernetes.
+  Prometheus installation requires a bit of configuration to get started. You would want to set up long-term external retention if you don't want a single machine as a point of failure and to analyze data from multiple Prometheus instances giving a global view. It is easier to get started with Prometheus for monitoring other CNCF projects like Kubernetes. -->
 
-- **Monitoring use-cases**<br></br>
-  DataDog has an extensive list of monitoring services it offers. List of all monitoring products that DataDog provides:
-  - Log Management
-  - APM
-  - Security Monitoring
-  - Infrastructure Monitoring
-  - Network Monitoring
-    
-  Prometheus enables you to capture time-series data as metrics. These metrics can be aggregated to give insights into the behavior of our systems.
-    
-- **User experience and visualizations**<br></br>
-  Prometheus ships with a visualization layer, but its functionality and UI are limited. Usually, if someone uses Prometheus, they integrate it with Grafana, another open-source web-based visualization tool.
-  DataDog comes with out-of-box charts and per-built widgets to build your own dashboards.
+### Features - Datadog has much more to offer
+
+Datadog:
+
+**Data Visualization:** Offers a plethora of visualization tools, including dashboards, graphs, and maps. Custom visualizations are also supported.
+
+**Real-time Monitoring:** Provides real-time monitoring through metrics, logs, and traces. Distributed tracing is available to track individual request performance.
+
+**Search Capabilities:** A robust search interface with various filters and operators. Anomaly detection using machine learning identifies unusual data patterns.
+
+**Machine Learning:** Features like anomaly detection and forecasting are driven by machine learning. Custom ML models can also be built.
 
 import Screenshot from "@theme/Screenshot"
-
-<Screenshot
-    alt="Prometheus UI"
-    height={500}
-    src="/img/blog/2021/10/datadog_vs_prometheus_prometheus_charts-min.webp"
-    title="Prometheus charts are limited in functionality"
-    width={700}
-/>
 
 <Screenshot
     alt="DataDog dashboard"
@@ -82,10 +85,43 @@ import Screenshot from "@theme/Screenshot"
     width={700}
 />
 
-- **Pricing**<br></br>
-  Prometheus is a **free, open-source tool.** Many SaaS vendors provide hosted Prometheus services as it takes time and effort to maintain Prometheus as your monitoring scales up.
+Prometheus:
 
-  DataDog is an expensive enterprise monitoring tool that has many different pricing tiers which vary on your use-cases. For example, infrastructure enterprise monitoring starts at **$23 per host per month** while its APM sand continuous profiler starts at **$40 per host per month.**
+**Data Visualization:** Comes with a built-in expression browser for data exploration. However, for advanced visualization, integration with Grafana is common.
+
+**Real-time Monitoring:** Regularly scrapes metrics from targets for real-time monitoring. Recording rules pre-aggregate data for easier real-time analysis.
+
+**Search Capabilities:** Uses PromQL, a query language, to search through its time-series database. PromDash, a dashboard builder, allows custom dashboard creation using PromQL queries.
+
+<Screenshot
+    alt="Prometheus UI"
+    height={500}
+    src="/img/blog/2021/10/datadog_vs_prometheus_prometheus_charts-min.webp"
+    title="Prometheus charts are limited in functionality"
+    width={700}
+/>
+
+<!-- - **Monitoring use-cases**<br></br>
+  DataDog has an extensive list of monitoring services it offers. List of all monitoring products that DataDog provides:
+  - Log Management
+  - APM
+  - Security Monitoring
+  - Infrastructure Monitoring
+  - Network Monitoring
+    
+  Prometheus enables you to capture time-series data as metrics. These metrics can be aggregated to give insights into the behavior of our systems. -->
+
+### Pricing - Prometheus is free(but has infra costs), Datadog can blow up bills
+
+Datadog:
+
+Offers a free trial. Post-trial, users can opt for various paid plans based on data volume and feature requirements. Plans are categorized into Essential, Pro, and Enterprise tiers.
+
+But you need to ask [whether getting Datadog is worth it or not](https://signoz.io/blog/justifying-a-million-dollar-observability-bill/).
+
+Prometheus:
+
+Being open-source, it's free to download and use. However, associated costs might arise from hosting and maintaining the necessary infrastructure.
 
 ## Key Features of DataDog
 
@@ -223,10 +259,6 @@ For more installation options, please visit our documentation.
 You can check out SigNoz's GitHub repo here 👇
 
 [![SigNoz GitHub repo](/img/blog/common/signoz_github.webp)](https://github.com/SigNoz/signoz)
-
-If you have any questions or need any help in setting things up, join our slack community and ping us in `#support` channel.
-
-[![SigNoz Slack community](/img/blog/common/join_slack_cta.png)](https://signoz.io/slack)
 
 ___
 

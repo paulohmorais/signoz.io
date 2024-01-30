@@ -2,63 +2,88 @@
 module.exports = {
   docs: [
     {
-      id: "introduction",
-      type: "doc",
-    },
-    {
       type: 'category',
-      label: 'Installation',
-      link: {
-        type: 'generated-index',
-        title: 'Install SigNoz',
-        description: 'To install SigNoz, follow the instructions in the sections below. If you don\'t want to self-host, try SigNoz Cloud.',
-        slug: '/install',
-      },
+      label: 'Get Started',
       items: [
-        'install/cloud',
-        "install/docker-standalone",
-        'install/docker-swarm',
+        {
+          id: "introduction",
+          type: "doc",
+          label: 'What is SigNoz ?'
+        },
         {
           type: 'category',
-          label: 'Kubernetes',
+          label: 'Installation',
           link: {
             type: 'generated-index',
-            title: 'Kubernetes',
-            description: 'Learn how to install SigNoz on Kubernetes with Helm',
-            slug: '/install/kubernetes',
+            title: 'Install SigNoz',
+            description: 'To install SigNoz, follow the instructions in the sections below. If you don\'t want to self-host, try SigNoz Cloud.',
+            slug: '/install',
           },
           items: [
-            'install/kubernetes/aws',
-            'install/kubernetes/gcp',
             {
-              id: 'install/kubernetes/others',
               type: 'doc',
-              label: 'Other Platform',
+              id: 'install/cloud',
+              label: 'Setup SigNoz Cloud',
             },
-          ]
+            {
+              type: 'category',
+              label: 'Self-Host SigNoz',
+              items: [
+                "install/docker-standalone",
+                'install/docker-swarm',
+                {
+                  type: 'category',
+                  label: 'Kubernetes',
+                  link: {
+                    type: 'generated-index',
+                    title: 'Kubernetes',
+                    description: 'Learn how to install SigNoz on Kubernetes with Helm',
+                    slug: '/install/kubernetes',
+                  },
+                  items: [
+                    'install/kubernetes/aws',
+                    'install/kubernetes/gcp',
+                    {
+                      id: 'install/kubernetes/others',
+                      type: 'doc',
+                      label: 'Other Platform',
+                    },
+                  ]
+                },
+                'install/troubleshooting',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Install OTel collector',
+              items: [
+                {
+                  id: 'tutorial/opentelemetry-binary-usage-in-virtual-machine',
+                  type: 'doc',
+                  label: 'VM',
+                },
+                {
+                  id: 'tutorial/kubernetes-infra-metrics',
+                  type: 'doc',
+                  label: 'Kubernetes',
+                },
+              ]
+            },
+          ],
         },
-        'install/troubleshooting',
       ],
     },
     {
       label: "APM & Distributed Tracing",
       type: "category",
       items: [
-        'instrumentation/overview',
-        'userguide/metrics',
         {
-          type: 'category',
-          label: 'View Traces',
-          link: {
-            type: 'doc',
-            id: 'userguide/traces',
-          },
-          items: [
-            'userguide/span-details',
-          ]
+          type: 'doc',
+          id: 'instrumentation/overview',
+          label: 'Get Started',
         },
         {
-          label: "Instrument your app",
+          label: "Instrument Application",
           type: "category",
           link: {
             type: 'generated-index',
@@ -116,107 +141,371 @@ module.exports = {
                 'instrumentation/angular',
               ]
             },
-            'instrumentation/golang',
-            'instrumentation/php',
-            'instrumentation/dotnet',
-            'instrumentation/ruby-on-rails',
-            'instrumentation/elixir',
-            'instrumentation/rust',
+            {
+              type: 'doc',
+              label: 'Golang',
+              id: 'instrumentation/golang',
+            },
+            {
+              type: 'doc',
+              label: 'PHP',
+              id: 'instrumentation/php',
+            },
+            {
+              type: 'doc',
+              label: '.NET',
+              id: 'instrumentation/dotnet',
+            },
+            {
+              type: 'doc',
+              label: 'Ruby on Rails',
+              id: 'instrumentation/ruby-on-rails',
+            },
+            {
+              type: 'doc',
+              label: 'Elixir',
+              id: 'instrumentation/elixir',
+            },
+            {
+              type: 'doc',
+              label: 'Rust',
+              id: 'instrumentation/rust',
+            },
           ],
         },
         {
-          type: 'doc',
-          id: 'application-monitoring/api-monitoring',
-          label: 'API Monitoring',
+          type: "category",
+          label: "APM Product Overview",
+          items: [
+            {
+              type: 'doc',
+              label: 'ClickHouse Queries for Traces',
+              id: 'userguide/metrics',
+            },
+            {
+              type: 'category',
+              label: 'View Traces',
+              link: {
+                type: 'doc',
+                id: 'userguide/traces',
+              },
+              items: [
+                'userguide/span-details',
+              ]
+            },
+            {
+              type: 'doc',
+              id: 'userguide/service-map',
+
+            },
+          ]
         },
-        'instrumentation/troubleshoot-instrumentation',
+        {
+          type: "category",
+          label: "Trace API",
+          items: [
+            {
+              type: "doc",
+              id: 'traces-management/trace-api/overview',
+              label: 'Overview',
+            },
+            {
+              type: 'doc',
+              id: "traces-management/trace-api/payload-model",
+              label: 'Payload Model',
+            },
+            {
+              type: 'doc',
+              id: "traces-management/trace-api/search-traces",
+              label: 'Search Traces',
+            },
+            {
+              type: 'doc',
+              id: "traces-management/trace-api/aggregate-traces",
+              label: 'Aggregate Traces',
+            },
+          ]
+        },
+        {
+          type: "category",
+          label: "Tutorials",
+          items: [
+            {
+              type: 'doc',
+              label: 'ClickHouse Queries for Traces',
+              id: 'userguide/writing-clickhouse-traces-query',
+            },
+            {
+              type: 'doc',
+              id: 'application-monitoring/api-monitoring',
+              label: 'API Monitoring',
+            },
+          ]
+        },
+        {
+          type: 'doc',
+          id: 'instrumentation/troubleshoot-instrumentation',
+          label: 'Troubleshooting',
+        },
+
       ],
     },
     {
       label: "Infrastructure Monitoring",
       type: "category",
       items: [
-        'userguide/send-metrics',
         'userguide/send-metrics-cloud',
+        'userguide/send-metrics',
         'userguide/navigate-user-interface',
+        'userguide/hostmetrics',
+        {
+          type: 'doc',
+          id: 'userguide/collecting-ecs-logs-and-metrics',
+          label: 'ECS Infra Metrics & Logs',
+        },
+
       ],
     },
     {
       label: "Logs Management",
       type: "category",
-
-      link: {
-        type: 'doc',
-        id: 'userguide/logs',
-      },
       items: [
-        'userguide/logs_query_builder',
-        'userguide/logs_fields',
-        'userguide/collect_kubernetes_pod_logs',
-        'userguide/collect_docker_logs',
-        'userguide/collecting_syslogs',
-        'userguide/collect_logs_from_file',
-        'userguide/collecting_nodejs_winston_logs',
         {
-          type: 'category',
-          label: 'Collecting Application Logs Using OTEL SDK',
-          items: [
-            'userguide/collecting_application_logs_otel_sdk_python',
-            'userguide/collecting_application_logs_otel_sdk_java',
-          ]
+          type: 'doc',
+          id: 'userguide/logs',
+          label: 'Get Started',
         },
         {
           type: 'category',
-          label: 'Existing Collectors to SigNoz',
+          label: 'Send Logs to SigNoz',
           items: [
-            'userguide/fluentbit_to_signoz',
-            'userguide/fluentd_to_signoz',
-            'userguide/logstash_to_signoz',
+            {
+              type: 'doc',
+              id: 'userguide/collect_kubernetes_pod_logs',
+              label: 'Kubernetes pod logs',
+            }, {
+              type: 'doc',
+              id: 'userguide/collect_docker_logs',
+              label: 'Docker logs',
+            }, {
+              type: 'doc',
+              id: 'userguide/heroku_logs_to_signoz',
+              label: 'Heroku logs',
+            },
+            {
+              type: 'doc',
+              id: 'userguide/vercel_logs_to_signoz',
+              label: 'Vercel logs',
+            },
+            {
+              type: 'doc',
+              id: 'userguide/send-logs-http',
+              label: 'HTTP logs',
+            },
+            {
+              type: 'doc',
+              id: 'userguide/collecting_syslogs',
+              label: 'Syslogs',
+            },
+            {
+              type: 'category',
+              label: 'Application Logs',
+              items: [
+                {
+                  type: 'doc',
+                  id: 'userguide/collect_logs_from_file',
+                  label: 'From Log File',
+                },
+                {
+                  type: 'doc',
+                  id: 'userguide/collecting_application_logs_otel_sdk_python',
+                  label: 'Using OTel Python SDK',
+                },
+                {
+                  type: 'doc',
+                  id: 'userguide/collecting_application_logs_otel_sdk_java',
+                  label: 'Using OTel Java SDK'
+                },
+              ],
+            },
+            {
+              type: 'doc',
+              id: 'userguide/collecting_nodejs_winston_logs',
+              label: 'NodeJS Winston logs',
+            },
+            {
+              type: 'doc',
+              id: 'userguide/send-cloudwatch-logs-to-signoz',
+              label: 'Cloudwatch logs',
+            },
+            {
+              type: 'category',
+              label: 'Existing Collectors to SigNoz',
+              items: [
+                'userguide/fluentbit_to_signoz',
+                'userguide/fluentd_to_signoz',
+                'userguide/logstash_to_signoz',
+              ],
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "Preprocess Logs",
+          link: {
+            type: "doc",
+            id: "logs-pipelines/introduction",
+          }, items: [
+            "logs-pipelines/concepts",
+            "logs-pipelines/processors",
+            {
+              type: "category",
+              label: "Guides",
+              link: {
+                type: "generated-index",
+                title: "Logs Pipeline Guides",
+                description: 'See these guides for detailed walkthroughs on creating Log Pipelines for specific purposes.',
+              },
+              items: [
+                "logs-pipelines/guides/json",
+                "logs-pipelines/guides/trace"
+              ]
+            }
+          ]
+        },
+        {
+          type: "category",
+          label: "Features",
+          items: [
+            'userguide/logs_fields',
+            'userguide/logs_query_builder',
+          ]
+        },
+        {
+          type: 'doc',
+          id: 'userguide/logs_clickhouse_queries',
+          label: 'ClickHouse Queries for Logs',
+        },
+        {
+          type: "category",
+          label: "Logs API",
+          items: [
+            {
+              type: "doc",
+              id: 'logs-management/logs-api/overview',
+              label: 'Overview',
+            },
+            {
+              type: 'doc',
+              id: "logs-management/logs-api/payload-model",
+              label: 'Payload Model',
+            },
+            {
+              type: 'doc',
+              id: "logs-management/logs-api/search-logs",
+              label: 'Search Logs',
+            },
+            {
+              type: 'doc',
+              id: "logs-management/logs-api/aggregate-logs",
+              label: 'Aggregate Logs',
+            },
+            {
+              type: 'doc',
+              id: "logs-management/logs-api/logs-url-for-explorer-page",
+              label: 'Logs URL for Explorer',
+            },
           ]
         },
         'userguide/logs_troubleshooting',
       ],
     },
     {
-      label: "Dashboards",
+      label: "Dashboards & Querying",
       type: "category",
-      link: {
-        type: 'doc',
-        id: 'userguide/manage-dashboards-and-panels',
-      },
       items: [
+        {
+          type: 'doc',
+          id: 'userguide/manage-dashboards-and-panels',
+          label: 'Get Started',
+        },
         'userguide/manage-dashboards',
         'userguide/manage-panels',
         'userguide/manage-variables',
         'userguide/create-a-custom-query',
+        {
+          type: 'doc',
+          id: 'userguide/query-builder',
+
+        },
+        {
+          type: 'doc',
+          id: 'userguide/write-a-metrics-clickhouse-query',
+          label: 'ClickHouse Query for Metrics',
+        },
       ]
     },
-    
-    {
-      type: 'doc',
-      id: 'userguide/alerts-management',
 
-    },
     {
-      type: 'doc',
-      id: 'userguide/service-map',
-
+      label: "Alerts",
+      type: "category",
+      items: [
+        {
+          type: 'doc',
+          id: 'userguide/alerts-management',
+          label: 'Set Alert Rules',
+        },
+        {
+          label: "Setup Alerts Notification",
+          type: "category",
+          link: {
+            type: "generated-index",
+            title: "Setup Alerts Notifications Channel",
+            description: 'You can setup notification channel for sending the generated alerts to other applications. Currently, the following channels are supported.',
+          },
+          items: [
+            {
+              type: 'doc',
+              id: 'alerts-management/notification-channel/slack',
+              label: 'Slack',
+            },
+            {
+              type: 'doc',
+              id: 'alerts-management/notification-channel/webhook',
+              label: 'Webhook',
+            },
+            {
+              type: 'doc',
+              id: 'alerts-management/notification-channel/pagerduty',
+              label: 'PagerDuty',
+            },
+            {
+              type: 'doc',
+              id: 'alerts-management/notification-channel/opsgenie',
+              label: 'Opsgenie',
+            },
+            {
+              type: 'doc',
+              id: 'alerts-management/notification-channel/ms-teams',
+              label: 'MS Teams',
+            },
+          ],
+        },
+      ],
     },
-    {
-      type: 'doc',
-      id: 'userguide/query-builder',
 
-    },
     {
       type: 'doc',
       id: 'monitor-http-endpoints',
+      label: 'Monitor HTTP Endpoints',
     },
     {
       type: 'doc',
       id: 'userguide/exceptions',
+      label: 'Monitroing Exceptions',
     },
     {
-      label: "Configuration",
+      label: "Security & Compliance",
       type: "category",
       items: [
         //     'userguide/overview',
@@ -238,12 +527,12 @@ module.exports = {
       items: [
         'tutorial/jvm-metrics',
         'tutorial/kubernetes-infra-metrics',
-        'tutorial/linux-host-metrics',       
+        'tutorial/linux-host-metrics',
         'tutorial/mongodb-metrics',
         'tutorial/instrumenting-angular-frontend',
         'tutorial/s3-integration-iam-role-eks',
+        'tutorial/oci-bucket-cold-storage-integration',
         'tutorial/opentelemetry-operator-usage',
-        'tutorial/opentelemetry-binary-usage-in-virtual-machine',
         'tutorial/setting-up-tls-for-signoz',
         'tutorial/setting-up-sso-saml-with-keycloak',
         'tutorial/writing-clickhouse-queries-in-dashboard',
@@ -251,8 +540,35 @@ module.exports = {
       ],
     },
     {
-      id: "architecture",
-      type: "doc",
+      label: "AWS Monitoring",
+      type: "category",
+      items: [
+        //'aws/getting-started',
+        {
+          type: 'category',
+          label: 'EC2',
+          link: {
+            type: 'generated-index',
+            title: 'EC2 Monitoring',
+            slug: '/ec2-monitoring',
+          },
+          items: [
+            {
+              type: 'doc',
+              id: 'aws-monitoring/ec2-logs',
+              label: 'Application/Server logs'
+    
+            },
+            {
+              type: 'doc',
+              id: 'aws-monitoring/ec2-infra-metrics',
+              label: 'Infrastructure Metrics'
+    
+            },
+          ]
+        },
+        
+      ],
     },
     {
       type: 'category',
@@ -286,6 +602,7 @@ module.exports = {
             'operate/migration/upgrade-0.19',
             'operate/migration/upgrade-0.23',
             'operate/migration/upgrade-0.27',
+            'operate/migration/upgrade-0.36',
           ]
         },
         {
@@ -318,22 +635,35 @@ module.exports = {
           ]
         },
         'operate/feature-flags',
+        {
+          id: "production-readiness",
+          type: "doc",
+        },
       ],
     },
     {
-      id: "production-readiness",
-      type: "doc",
-    },
-    {
-      id: "contributing",
-      type: "doc",
+      type: "category",
+      label: "About SigNoz",
+      items: [
+        {
+          id: "architecture",
+          type: "doc",
+        },
+        {
+          id: "contributing",
+          type: "doc",
+        },
+        {
+          id: "roadmap",
+          type: "doc",
+        },
+        // 'about-signoz/architecture',
+        // 'about-signoz/contributing',
+        // 'about-signoz/roadmap',
+      ]
     },
     {
       id: "community",
-      type: "doc",
-    },
-    {
-      id: "roadmap",
       type: "doc",
     },
     {

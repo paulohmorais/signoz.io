@@ -18,7 +18,7 @@ In this post we want to lay out typical price which someone would incur in runni
 
 <!--truncate-->
 
-![Cover Image](/img/blog/2021/04/signoz-benchmarks-1.png)
+![Cover Image](/img/blog/2021/04/signoz-benchmarks-1.webp)
 
 In this post we would benchmark the cost of self hosting SigNoz and the price you will pay to SaaS APM vendors. For benchmarking, we will take **DataDog** as an example - as it is one of the more popular APM tools in the market.
 

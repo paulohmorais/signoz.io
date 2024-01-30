@@ -59,6 +59,7 @@ To change the position of a panel:
 1. From the sidebar, choose **Dashboard**.
 2. Find the dashboard you wish to remove. In the **Action** column, select the **Delete** button.
 
+<!---
 ## Steps to Import a Grafana Dashboard
 
 Status: Experimental
@@ -82,6 +83,7 @@ Once the above steps are completed successfully, you will see a new dashboard, a
 
 Note: The imported dashboard might have the variables, and those variables are copied as is from the source. The query type ones do not work since SigNoz supports variable by query using ClickHouse. You might have to update them. Please follow [this](./manage-variables.md) guide for more info.
 
+--->
 
 ## Get Help
 

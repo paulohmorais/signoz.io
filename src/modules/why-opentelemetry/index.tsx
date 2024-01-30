@@ -8,22 +8,22 @@ export const WhyOpenTelemetry = () => {
     {
       title: "No vendor lock-in",
       desc: "Using an open source standard frees you from vendor lock-in.",
-      figure: "/img/landing/property-no-vendor-lock-in.png",
+      figure: "/img/landing/property-no-vendor-lock-in.webp",
     },
     {
       title: "Ease of use",
       desc: "Use auto-instrumentation libraries of OpenTelemetry to get started with little to no code change.",
-      figure: "/img/landing/property-ease-of-use.png",
+      figure: "/img/landing/property-ease-of-use.webp",
     },
     {
       title: "Covers all use-cases",
       desc: "OpenTelemetry is a one-stop solution for all your telemetry needs.",
-      figure: "/img/landing/property-covers-all-use-cases.png",
+      figure: "/img/landing/property-covers-all-use-cases.webp",
     },
     {
       title: "Standardize Observability",
       desc: "A single standard for all telemetry signals means increased developer productivity, consistency across teams.",
-      figure: "/img/landing/property-standardize-observability.png",
+      figure: "/img/landing/property-standardize-observability.webp",
     },
   ];
 
@@ -35,7 +35,7 @@ export const WhyOpenTelemetry = () => {
             <Heading type={4}>SigNoz is OpenTelemetry-Native</Heading>
             <Heading type={1}>But why OpenTelemetry</Heading>
             <SubHeading>
-              OpenTelemetry is the second most active project in the CNCF,
+              OpenTelemetry is the second most active project in the CNCF,&nbsp;
               <br className="hidden lg:inline" />
                with only Kubernetes being more active.
             </SubHeading>

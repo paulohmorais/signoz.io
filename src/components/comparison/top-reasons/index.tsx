@@ -8,7 +8,7 @@ const TopReasons = (props) => {
       <section className={`container`}>
         <div className={`${styles.reasonsPoints}`}>
           <h3 className={`${styles.reasonsPointTitle} highlight`}>
-            In-depth: SigNoz vs Grafana
+            Key Points: SigNoz vs Grafana
           </h3>
           <h4 className={styles.reasonMainPointTitle}>
             Why do devs choose SigNoz over Grafana?

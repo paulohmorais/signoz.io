@@ -65,11 +65,6 @@ Trace data is also visualized with Flamegraphs and Gantt charts.
 
 With SigNoz, you get metrics, traces and logs in a single application unlike Jaeger which primarily focuses on distributed tracing.
 
-### What will be your paid plan like?
-
-SigNoz will be always open-source and free to self-host for smaller
-teams. You can find more details about our pricing plans [here](https://signoz.io/pricing/).
-
 
 ### What is unique about SigNoz as an observability tool?
 
@@ -94,7 +89,7 @@ So, it depends on the use cases you are trying to solve - whether SigNoz will fi
 
 ### Can I run SigNoz as a service in AWS?
 
-Yes, you can run SigNoz in an AWS instance using Docker-Compose or Docker Swarm. You can also use our helm chart to deploy SigNoz in EKS.
+Yes, you can run SigNoz in an AWS instance using Docker Compose or Docker Swarm. You can also use our helm chart to deploy SigNoz in EKS.
 
 Refer here: [https://signoz.io/docs/install/](https://signoz.io/docs/install/)
 

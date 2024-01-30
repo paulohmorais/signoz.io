@@ -9,7 +9,7 @@ const Observability = () => {
         <div className="flex flex-col items-center mb-5 text-center">
           <Heading type={4}>Enterprise Grade Observability</Heading>
           <Heading type={1}>
-            Get access to observability at any scale
+            Get access to observability at any scale&nbsp;
             <br className="hidden lg:inline" />
             with advanced security and compliance.
           </Heading>
